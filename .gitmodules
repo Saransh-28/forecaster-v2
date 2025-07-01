@@ -1,0 +1,3 @@
+[submodule "backtester"]
+	path = backtester
+	url = https://github.com/Saransh-28/backtester.git
