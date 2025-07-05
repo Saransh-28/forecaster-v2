@@ -1,0 +1,5314 @@
+{
+    "btc": {
+        "default": {
+            "close_to_close_volatility": {
+                "window": 5
+            },
+            "yang_zhang_volatility": {
+                "k": 0.34
+            },
+            "detect_head_shoulder": {
+                "shoulder_tolerance": 0.03,
+                "min_head_to_shoulder_diff": 0.01
+            },
+            "detect_multiple_tops_bottoms": {
+                "window": 5
+            },
+            "detect_triangle_pattern": {
+                "window": 7
+            },
+            "detect_wedge": {
+                "window": 7
+            },
+            "detect_channel": {
+                "window": 10,
+                "channel_range_threshold": 0.03
+            },
+            "detect_double_top_bottom": {
+                "min_peak_distance": 4,
+                "threshold": 0.02,
+                "min_valley_diff": 0.01,
+                "stamp": "confirmation"
+            },
+            "find_pivots": {
+                "window": 5
+            },
+            "power_law_corridor": {
+                "price_column": "Close",
+                "window": 10,
+                "sigma_multiplier": 1.0
+            },
+            "detect_liquidity_grabs": {
+                "lookback": 10,
+                "min_wick_ratio": 0.6,
+                "confirm_next_bar": false
+            },
+            "generate_ifvg_signals": {
+                "lookback_sweep": 20,
+                "require_sweep": false
+            },
+            "head_and_shoulders_top_signal": {
+                "bars_left": 3,
+                "tolerance": 0.02,
+                "warmup": 9
+            },
+            "detect_pennants": {
+                "bars_left": 3,
+                "slope_tol": 0.02,
+                "flat_tol": 0.02,
+                "warmup": 9
+            },
+            "mark_bwab_signals": {
+                "ma_len": 30,
+                "range_len": 10,
+                "atr_len": 18,
+                "atr_mult": 1.2,
+                "entry_buildup": 6
+            },
+            "triple_ma": {
+                "s1": 5,
+                "s2": 15,
+                "s3": 30
+            },
+            "generate_market_bottom_signals": {
+                "length": 2,
+                "bbl": 15,
+                "mult": 2
+            },
+            "williams_r_signals": {
+                "period": 14,
+                "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                "lookback": 30,
+                "ma_period": 20,
+                "atr_period": 14,
+                "atr_mult": 0.5
+            },
+            "compute_two_pole_oscillator": {
+                "filt_len": 20,
+                "sma_len": 25,
+                "threshold": 0.01
+            },
+            "adaptive_t3_signals": {
+                "rsi_len": 25,
+                "min_len": 5,
+                "max_len": 40,
+                "v": 0.5,
+                "volat": 40
+            },
+            "next_pivot_signals": {
+                "hist_len": 10,
+                "fore_len": 20,
+                "lookback": 30,
+                "method": 0
+            },
+            "market_sentiment_signals": {
+                "rsi_len": 14,
+                "stoch_k_len": 14,
+                "stoch_k_smooth": 3,
+                "cci_len": 20,
+                "bbp_len": 13,
+                "ma_len": 20,
+                "st_len": 10,
+                "st_mult": 3,
+                "reg_len": 25,
+                "ms_len": 5
+            },
+            "ema_pivot_signals": {
+                "ema_length": 45,
+                "backcandles": 15,
+                "pivot_window": 10
+            },
+            "harsi_strategy": {
+                "rsi_period": 14,
+                "fastk_period": 14,
+                "slowk_period": 3,
+                "slowk_matype": 0,
+                "slowd_period": 3,
+                "slowd_matype": 0,
+                "ema_period": 30,
+                "volume_sma_slow": 20,
+                "volume_sma_fast": 5,
+                "adx_p_period": 14,
+                "adx_m_period": 14
+            }
+        },
+        "30min": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 1,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 86,
+                    "rsi_period": 10,
+                    "fastk_period": 12,
+                    "slowk_period": 10,
+                    "slowk_matype": 0,
+                    "slowd_period": 3,
+                    "slowd_matype": 3,
+                    "ema_period": 49,
+                    "volume_sma_slow": 17,
+                    "volume_sma_fast": 7,
+                    "adx_p_period": 16,
+                    "adx_m_period": 13
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 14,
+                    "backcandles": 13,
+                    "pivot_window": 18
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 30,
+                    "stoch_k_len": 15,
+                    "stoch_k_smooth": 5,
+                    "cci_len": 7,
+                    "bbp_len": 17,
+                    "ma_len": 15,
+                    "st_len": 15,
+                    "st_mult": 4,
+                    "reg_len": 43,
+                    "ms_len": 9,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 13,
+                    "fore_len": 29,
+                    "lookback": 121,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 21,
+                    "min_len": 6,
+                    "max_len": 27,
+                    "v": 0.7550189156350446,
+                    "volat": 23,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 15,
+                    "sma_len": 34,
+                    "threshold": 0.28974778277272767,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 3,
+                    "ma_period": 29,
+                    "atr_period": 9,
+                    "atr_mult": 0.5165878067849459,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 29,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 7,
+                    "bbl": 19,
+                    "mult": 2.198253152158298
+            },
+            "triple_ma": {
+                    "s1": 6,
+                    "s2": 30,
+                    "s3": 48
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 7,
+                    "range_len": 5,
+                    "atr_len": 5,
+                    "atr_mult": 0.5046239426597304,
+                    "entry_buildup": 6
+            }
+        },
+        "1h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 70,
+                    "rsi_period": 10,
+                    "fastk_period": 10,
+                    "slowk_period": 10,
+                    "slowk_matype": 1,
+                    "slowd_period": 8,
+                    "slowd_matype": 3,
+                    "ema_period": 21,
+                    "volume_sma_slow": 17,
+                    "volume_sma_fast": 9,
+                    "adx_p_period": 18,
+                    "adx_m_period": 16
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 37,
+                    "backcandles": 8,
+                    "pivot_window": 12
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 26,
+                    "stoch_k_len": 20,
+                    "stoch_k_smooth": 2,
+                    "cci_len": 8,
+                    "bbp_len": 5,
+                    "ma_len": 6,
+                    "st_len": 8,
+                    "st_mult": 5,
+                    "reg_len": 37,
+                    "ms_len": 9,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 14,
+                    "fore_len": 29,
+                    "lookback": 114,
+                    "method": 2,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 13,
+                    "min_len": 10,
+                    "max_len": 43,
+                    "v": 0.31116172461281155,
+                    "volat": 54,
+                    "persist": 5,
+                    "lag": 3
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 7,
+                    "sma_len": 29,
+                    "threshold": 0.10468547077485355,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 3,
+                    "ma_period": 4,
+                    "atr_period": 29,
+                    "atr_mult": 1.0993950167651185,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 25,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 12,
+                    "bbl": 18,
+                    "mult": 1.0898736337670258
+            },
+            "triple_ma": {
+                    "s1": 14,
+                    "s2": 21,
+                    "s3": 31
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 32,
+                    "range_len": 5,
+                    "atr_len": 16,
+                    "atr_mult": 0.5027446201634989,
+                    "entry_buildup": 10
+            }
+        },
+        "2h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 1,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 70,
+                    "rsi_period": 23,
+                    "fastk_period": 23,
+                    "slowk_period": 7,
+                    "slowk_matype": 1,
+                    "slowd_period": 5,
+                    "slowd_matype": 3,
+                    "ema_period": 50,
+                    "volume_sma_slow": 23,
+                    "volume_sma_fast": 10,
+                    "adx_p_period": 15,
+                    "adx_m_period": 18
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 11,
+                    "backcandles": 18,
+                    "pivot_window": 13
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 17,
+                    "stoch_k_len": 27,
+                    "stoch_k_smooth": 4,
+                    "cci_len": 13,
+                    "bbp_len": 21,
+                    "ma_len": 5,
+                    "st_len": 19,
+                    "st_mult": 3,
+                    "reg_len": 26,
+                    "ms_len": 9,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 18,
+                    "fore_len": 29,
+                    "lookback": 141,
+                    "method": 2,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 10,
+                    "min_len": 3,
+                    "max_len": 20,
+                    "v": 0.5426049674331705,
+                    "volat": 34,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 30,
+                    "sma_len": 15,
+                    "threshold": 0.2841273535703819,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 10,
+                    "ma_period": 2,
+                    "atr_period": 29,
+                    "atr_mult": 0.7506634574701241,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 18,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 8,
+                    "bbl": 24,
+                    "mult": 1.0945656578177216
+            },
+            "triple_ma": {
+                    "s1": 12,
+                    "s2": 22,
+                    "s3": 46
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 10,
+                    "range_len": 5,
+                    "atr_len": 28,
+                    "atr_mult": 0.6621334460057264,
+                    "entry_buildup": 6
+            }
+        },
+        "3h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 70,
+                    "rsi_period": 22,
+                    "fastk_period": 17,
+                    "slowk_period": 3,
+                    "slowk_matype": 3,
+                    "slowd_period": 9,
+                    "slowd_matype": 3,
+                    "ema_period": 45,
+                    "volume_sma_slow": 19,
+                    "volume_sma_fast": 3,
+                    "adx_p_period": 24,
+                    "adx_m_period": 11
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 14,
+                    "backcandles": 12,
+                    "pivot_window": 16
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 21,
+                    "stoch_k_len": 15,
+                    "stoch_k_smooth": 2,
+                    "cci_len": 7,
+                    "bbp_len": 8,
+                    "ma_len": 11,
+                    "st_len": 18,
+                    "st_mult": 1,
+                    "reg_len": 5,
+                    "ms_len": 3,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 6,
+                    "fore_len": 24,
+                    "lookback": 75,
+                    "method": 2,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 23,
+                    "min_len": 6,
+                    "max_len": 57,
+                    "v": 0.475595379391662,
+                    "volat": 48,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 17,
+                    "sma_len": 49,
+                    "threshold": 0.26053815525637136,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 4,
+                    "ma_period": 48,
+                    "atr_period": 30,
+                    "atr_mult": 0.5062968303487128,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 24,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 3,
+                    "bbl": 12,
+                    "mult": 1.2498097902504717
+            },
+            "triple_ma": {
+                    "s1": 15,
+                    "s2": 12,
+                    "s3": 42
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 13,
+                    "range_len": 6,
+                    "atr_len": 8,
+                    "atr_mult": 0.7953480905088929,
+                    "entry_buildup": 7
+            }
+        },
+        "4h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 77,
+                    "rsi_period": 16,
+                    "fastk_period": 11,
+                    "slowk_period": 7,
+                    "slowk_matype": 3,
+                    "slowd_period": 10,
+                    "slowd_matype": 3,
+                    "ema_period": 31,
+                    "volume_sma_slow": 25,
+                    "volume_sma_fast": 5,
+                    "adx_p_period": 26,
+                    "adx_m_period": 13
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 12,
+                    "backcandles": 10,
+                    "pivot_window": 10
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 22,
+                    "stoch_k_len": 23,
+                    "stoch_k_smooth": 2,
+                    "cci_len": 14,
+                    "bbp_len": 15,
+                    "ma_len": 30,
+                    "st_len": 20,
+                    "st_mult": 5,
+                    "reg_len": 8,
+                    "ms_len": 6,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 7,
+                    "fore_len": 22,
+                    "lookback": 82,
+                    "method": 2,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 17,
+                    "min_len": 9,
+                    "max_len": 59,
+                    "v": 0.32203448154274544,
+                    "volat": 59,
+                    "persist": 5,
+                    "lag": 2
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 19,
+                    "sma_len": 27,
+                    "threshold": 0.13607154068601843,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 6,
+                    "atr_period": 12,
+                    "atr_mult": 0.9316956199798299,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 12,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 6,
+                    "bbl": 6,
+                    "mult": 1.1473762771266152
+            },
+            "triple_ma": {
+                    "s1": 9,
+                    "s2": 26,
+                    "s3": 37
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 5,
+                    "range_len": 8,
+                    "atr_len": 17,
+                    "atr_mult": 0.5508981902226171,
+                    "entry_buildup": 8
+            }
+        },
+        "5h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 1,
+                    "use_vortex": 1,
+                    "ost": 74,
+                    "rsi_period": 18,
+                    "fastk_period": 11,
+                    "slowk_period": 4,
+                    "slowk_matype": 3,
+                    "slowd_period": 4,
+                    "slowd_matype": 2,
+                    "ema_period": 35,
+                    "volume_sma_slow": 24,
+                    "volume_sma_fast": 7,
+                    "adx_p_period": 15,
+                    "adx_m_period": 27
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 19,
+                    "backcandles": 7,
+                    "pivot_window": 19
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 7,
+                    "stoch_k_len": 26,
+                    "stoch_k_smooth": 5,
+                    "cci_len": 9,
+                    "bbp_len": 26,
+                    "ma_len": 7,
+                    "st_len": 8,
+                    "st_mult": 2,
+                    "reg_len": 5,
+                    "ms_len": 10,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 16,
+                    "fore_len": 10,
+                    "lookback": 142,
+                    "method": 2,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 10,
+                    "min_len": 8,
+                    "max_len": 28,
+                    "v": 0.3014703605985512,
+                    "volat": 48,
+                    "persist": 5,
+                    "lag": 2
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 15,
+                    "sma_len": 18,
+                    "threshold": 0.32469447432325055,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 4,
+                    "ma_period": 2,
+                    "atr_period": 6,
+                    "atr_mult": 0.38537212928910225,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 10,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 17,
+                    "bbl": 6,
+                    "mult": 1.1044223266560842
+            },
+            "triple_ma": {
+                    "s1": 8,
+                    "s2": 26,
+                    "s3": 37
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 8,
+                    "range_len": 8,
+                    "atr_len": 7,
+                    "atr_mult": 0.6240071754865926,
+                    "entry_buildup": 9
+            }
+        }
+    },
+    "eth": {
+        "default": {
+            "close_to_close_volatility": {
+                "window": 5
+            },
+            "yang_zhang_volatility": {
+                "k": 0.34
+            },
+            "detect_head_shoulder": {
+                "shoulder_tolerance": 0.03,
+                "min_head_to_shoulder_diff": 0.01
+            },
+            "detect_multiple_tops_bottoms": {
+                "window": 5
+            },
+            "detect_triangle_pattern": {
+                "window": 7
+            },
+            "detect_wedge": {
+                "window": 7
+            },
+            "detect_channel": {
+                "window": 10,
+                "channel_range_threshold": 0.03
+            },
+            "detect_double_top_bottom": {
+                "min_peak_distance": 4,
+                "threshold": 0.02,
+                "min_valley_diff": 0.01,
+                "stamp": "confirmation"
+            },
+            "find_pivots": {
+                "window": 5
+            },
+            "power_law_corridor": {
+                "price_column": "Close",
+                "window": 10,
+                "sigma_multiplier": 1.0
+            },
+            "detect_liquidity_grabs": {
+                "lookback": 10,
+                "min_wick_ratio": 0.6,
+                "confirm_next_bar": false
+            },
+            "generate_ifvg_signals": {
+                "lookback_sweep": 20,
+                "require_sweep": false
+            },
+            "head_and_shoulders_top_signal": {
+                "bars_left": 3,
+                "tolerance": 0.02,
+                "warmup": 9
+            },
+            "detect_pennants": {
+                "bars_left": 3,
+                "slope_tol": 0.02,
+                "flat_tol": 0.02,
+                "warmup": 9
+            },
+            "mark_bwab_signals": {
+                "ma_len": 30,
+                "range_len": 10,
+                "atr_len": 18,
+                "atr_mult": 1.2,
+                "entry_buildup": 6
+            },
+            "triple_ma": {
+                "s1": 5,
+                "s2": 15,
+                "s3": 30
+            },
+            "generate_market_bottom_signals": {
+                "length": 2,
+                "bbl": 15,
+                "mult": 2
+            },
+            "williams_r_signals": {
+                "period": 14,
+                "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                "lookback": 30,
+                "ma_period": 20,
+                "atr_period": 14,
+                "atr_mult": 0.5
+            },
+            "compute_two_pole_oscillator": {
+                "filt_len": 20,
+                "sma_len": 25,
+                "threshold": 0.01
+            },
+            "adaptive_t3_signals": {
+                "rsi_len": 25,
+                "min_len": 5,
+                "max_len": 40,
+                "v": 0.5,
+                "volat": 40
+            },
+            "next_pivot_signals": {
+                "hist_len": 10,
+                "fore_len": 20,
+                "lookback": 30,
+                "method": 0
+            },
+            "market_sentiment_signals": {
+                "rsi_len": 14,
+                "stoch_k_len": 14,
+                "stoch_k_smooth": 3,
+                "cci_len": 20,
+                "bbp_len": 13,
+                "ma_len": 20,
+                "st_len": 10,
+                "st_mult": 3,
+                "reg_len": 25,
+                "ms_len": 5
+            },
+            "ema_pivot_signals": {
+                "ema_length": 45,
+                "backcandles": 15,
+                "pivot_window": 10
+            },
+            "harsi_strategy": {
+                "rsi_period": 14,
+                "fastk_period": 14,
+                "slowk_period": 3,
+                "slowk_matype": 0,
+                "slowd_period": 3,
+                "slowd_matype": 0,
+                "ema_period": 30,
+                "volume_sma_slow": 20,
+                "volume_sma_fast": 5,
+                "adx_p_period": 14,
+                "adx_m_period": 14
+            }
+        },
+        "30min": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 89,
+                    "rsi_period": 19,
+                    "fastk_period": 12,
+                    "slowk_period": 9,
+                    "slowk_matype": 2,
+                    "slowd_period": 6,
+                    "slowd_matype": 1,
+                    "ema_period": 44,
+                    "volume_sma_slow": 28,
+                    "volume_sma_fast": 9,
+                    "adx_p_period": 27,
+                    "adx_m_period": 10
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 11,
+                    "backcandles": 14,
+                    "pivot_window": 14
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 16,
+                    "stoch_k_len": 13,
+                    "stoch_k_smooth": 1,
+                    "cci_len": 28,
+                    "bbp_len": 21,
+                    "ma_len": 17,
+                    "st_len": 11,
+                    "st_mult": 2,
+                    "reg_len": 8,
+                    "ms_len": 7,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 15,
+                    "fore_len": 13,
+                    "lookback": 94,
+                    "method": 0,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 33,
+                    "min_len": 5,
+                    "max_len": 48,
+                    "v": 0.6681975566257625,
+                    "volat": 50,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 11,
+                    "sma_len": 22,
+                    "threshold": 0.3994967310711223,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 12,
+                    "ma_period": 5,
+                    "atr_period": 27,
+                    "atr_mult": 0.4806989145949705,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 23,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 6,
+                    "bbl": 13,
+                    "mult": 1.846341639771088
+            },
+            "triple_ma": {
+                    "s1": 12,
+                    "s2": 20,
+                    "s3": 37
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 49,
+                    "range_len": 7,
+                    "atr_len": 7,
+                    "atr_mult": 0.642436559620004,
+                    "entry_buildup": 6
+            }
+        },
+        "1h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 90,
+                    "rsi_period": 16,
+                    "fastk_period": 17,
+                    "slowk_period": 10,
+                    "slowk_matype": 1,
+                    "slowd_period": 9,
+                    "slowd_matype": 0,
+                    "ema_period": 17,
+                    "volume_sma_slow": 23,
+                    "volume_sma_fast": 3,
+                    "adx_p_period": 12,
+                    "adx_m_period": 16
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 21,
+                    "backcandles": 6,
+                    "pivot_window": 19
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 5,
+                    "stoch_k_len": 13,
+                    "stoch_k_smooth": 3,
+                    "cci_len": 30,
+                    "bbp_len": 30,
+                    "ma_len": 22,
+                    "st_len": 10,
+                    "st_mult": 5,
+                    "reg_len": 5,
+                    "ms_len": 8,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 7,
+                    "fore_len": 30,
+                    "lookback": 168,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 15,
+                    "min_len": 6,
+                    "max_len": 24,
+                    "v": 0.7981676966027977,
+                    "volat": 22,
+                    "persist": 5,
+                    "lag": 3
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 10,
+                    "sma_len": 47,
+                    "threshold": 0.08135571528384244,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 11,
+                    "ma_period": 2,
+                    "atr_period": 30,
+                    "atr_mult": 0.8936137965455735,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 27,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 6,
+                    "bbl": 11,
+                    "mult": 1.0809321071791416
+            },
+            "triple_ma": {
+                    "s1": 9,
+                    "s2": 24,
+                    "s3": 45
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 7,
+                    "range_len": 16,
+                    "atr_len": 29,
+                    "atr_mult": 0.6952368625447262,
+                    "entry_buildup": 9
+            }
+        },
+        "2h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 88,
+                    "rsi_period": 27,
+                    "fastk_period": 10,
+                    "slowk_period": 5,
+                    "slowk_matype": 0,
+                    "slowd_period": 10,
+                    "slowd_matype": 2,
+                    "ema_period": 24,
+                    "volume_sma_slow": 14,
+                    "volume_sma_fast": 9,
+                    "adx_p_period": 13,
+                    "adx_m_period": 23
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 10,
+                    "backcandles": 2,
+                    "pivot_window": 17
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 23,
+                    "stoch_k_len": 24,
+                    "stoch_k_smooth": 2,
+                    "cci_len": 28,
+                    "bbp_len": 24,
+                    "ma_len": 15,
+                    "st_len": 16,
+                    "st_mult": 5,
+                    "reg_len": 20,
+                    "ms_len": 9,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 9,
+                    "fore_len": 23,
+                    "lookback": 155,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 10,
+                    "min_len": 8,
+                    "max_len": 32,
+                    "v": 0.7842080871240596,
+                    "volat": 58,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 22,
+                    "sma_len": 10,
+                    "threshold": 0.4560882076396557,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 21,
+                    "ma_period": 2,
+                    "atr_period": 16,
+                    "atr_mult": 1.2097588605450047,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 19,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 9,
+                    "bbl": 5,
+                    "mult": 1.3753881431367476
+            },
+            "triple_ma": {
+                    "s1": 9,
+                    "s2": 13,
+                    "s3": 33
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 7,
+                    "range_len": 7,
+                    "atr_len": 9,
+                    "atr_mult": 0.5875263991747004,
+                    "entry_buildup": 9
+            }
+        },
+        "3h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 90,
+                    "rsi_period": 12,
+                    "fastk_period": 27,
+                    "slowk_period": 3,
+                    "slowk_matype": 0,
+                    "slowd_period": 6,
+                    "slowd_matype": 2,
+                    "ema_period": 48,
+                    "volume_sma_slow": 10,
+                    "volume_sma_fast": 7,
+                    "adx_p_period": 15,
+                    "adx_m_period": 28
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 13,
+                    "backcandles": 5,
+                    "pivot_window": 8
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 20,
+                    "stoch_k_len": 28,
+                    "stoch_k_smooth": 1,
+                    "cci_len": 12,
+                    "bbp_len": 23,
+                    "ma_len": 16,
+                    "st_len": 17,
+                    "st_mult": 2,
+                    "reg_len": 34,
+                    "ms_len": 6,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 7,
+                    "fore_len": 20,
+                    "lookback": 91,
+                    "method": 2,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 10,
+                    "min_len": 6,
+                    "max_len": 50,
+                    "v": 0.6837229586920914,
+                    "volat": 49,
+                    "persist": 5,
+                    "lag": 2
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 12,
+                    "sma_len": 36,
+                    "threshold": 0.41595398593727967,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 8,
+                    "ma_period": 2,
+                    "atr_period": 17,
+                    "atr_mult": 0.46319051901388647,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 27,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 3,
+                    "bbl": 14,
+                    "mult": 1.0449281578071639
+            },
+            "triple_ma": {
+                    "s1": 4,
+                    "s2": 18,
+                    "s3": 39
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 48,
+                    "range_len": 5,
+                    "atr_len": 5,
+                    "atr_mult": 0.5603024825273846,
+                    "entry_buildup": 4
+            }
+        },
+        "4h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 77,
+                    "rsi_period": 29,
+                    "fastk_period": 20,
+                    "slowk_period": 6,
+                    "slowk_matype": 3,
+                    "slowd_period": 7,
+                    "slowd_matype": 1,
+                    "ema_period": 15,
+                    "volume_sma_slow": 30,
+                    "volume_sma_fast": 8,
+                    "adx_p_period": 20,
+                    "adx_m_period": 27
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 13,
+                    "backcandles": 12,
+                    "pivot_window": 5
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 17,
+                    "stoch_k_len": 14,
+                    "stoch_k_smooth": 4,
+                    "cci_len": 25,
+                    "bbp_len": 10,
+                    "ma_len": 8,
+                    "st_len": 5,
+                    "st_mult": 2,
+                    "reg_len": 38,
+                    "ms_len": 4,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 5,
+                    "fore_len": 21,
+                    "lookback": 93,
+                    "method": 0,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 10,
+                    "min_len": 9,
+                    "max_len": 47,
+                    "v": 0.30952407760019496,
+                    "volat": 55,
+                    "persist": 5,
+                    "lag": 4
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 8,
+                    "sma_len": 31,
+                    "threshold": 0.29838480427120484,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 2,
+                    "atr_period": 20,
+                    "atr_mult": 0.5227078654591178,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 10,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 3,
+                    "bbl": 5,
+                    "mult": 1.0004508984751876
+            },
+            "triple_ma": {
+                    "s1": 6,
+                    "s2": 13,
+                    "s3": 27
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 8,
+                    "range_len": 11,
+                    "atr_len": 9,
+                    "atr_mult": 0.5763841687182657,
+                    "entry_buildup": 9
+            }
+        },
+        "5h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 83,
+                    "rsi_period": 24,
+                    "fastk_period": 10,
+                    "slowk_period": 8,
+                    "slowk_matype": 1,
+                    "slowd_period": 5,
+                    "slowd_matype": 1,
+                    "ema_period": 19,
+                    "volume_sma_slow": 13,
+                    "volume_sma_fast": 6,
+                    "adx_p_period": 13,
+                    "adx_m_period": 26
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 17,
+                    "backcandles": 14,
+                    "pivot_window": 11
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 6,
+                    "stoch_k_len": 15,
+                    "stoch_k_smooth": 5,
+                    "cci_len": 11,
+                    "bbp_len": 14,
+                    "ma_len": 24,
+                    "st_len": 13,
+                    "st_mult": 1,
+                    "reg_len": 28,
+                    "ms_len": 7,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 6,
+                    "fore_len": 16,
+                    "lookback": 161,
+                    "method": 0,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 21,
+                    "min_len": 3,
+                    "max_len": 50,
+                    "v": 0.5393168024426894,
+                    "volat": 47,
+                    "persist": 5,
+                    "lag": 1
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 29,
+                    "sma_len": 46,
+                    "threshold": 0.3414483692352618,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 31,
+                    "atr_period": 8,
+                    "atr_mult": 0.20829838788599875,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 20,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 3,
+                    "bbl": 5,
+                    "mult": 1.4055697273145313
+            },
+            "triple_ma": {
+                    "s1": 3,
+                    "s2": 22,
+                    "s3": 35
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 5,
+                    "range_len": 8,
+                    "atr_len": 13,
+                    "atr_mult": 0.5127937532373001,
+                    "entry_buildup": 4
+            }
+        }
+    },
+    "sol": {
+        "default": {
+            "close_to_close_volatility": {
+                "window": 5
+            },
+            "yang_zhang_volatility": {
+                "k": 0.34
+            },
+            "detect_head_shoulder": {
+                "shoulder_tolerance": 0.03,
+                "min_head_to_shoulder_diff": 0.01
+            },
+            "detect_multiple_tops_bottoms": {
+                "window": 5
+            },
+            "detect_triangle_pattern": {
+                "window": 7
+            },
+            "detect_wedge": {
+                "window": 7
+            },
+            "detect_channel": {
+                "window": 10,
+                "channel_range_threshold": 0.03
+            },
+            "detect_double_top_bottom": {
+                "min_peak_distance": 4,
+                "threshold": 0.02,
+                "min_valley_diff": 0.01,
+                "stamp": "confirmation"
+            },
+            "find_pivots": {
+                "window": 5
+            },
+            "power_law_corridor": {
+                "price_column": "Close",
+                "window": 10,
+                "sigma_multiplier": 1.0
+            },
+            "detect_liquidity_grabs": {
+                "lookback": 10,
+                "min_wick_ratio": 0.6,
+                "confirm_next_bar": false
+            },
+            "generate_ifvg_signals": {
+                "lookback_sweep": 20,
+                "require_sweep": false
+            },
+            "head_and_shoulders_top_signal": {
+                "bars_left": 3,
+                "tolerance": 0.02,
+                "warmup": 9
+            },
+            "detect_pennants": {
+                "bars_left": 3,
+                "slope_tol": 0.02,
+                "flat_tol": 0.02,
+                "warmup": 9
+            },
+            "mark_bwab_signals": {
+                "ma_len": 30,
+                "range_len": 10,
+                "atr_len": 18,
+                "atr_mult": 1.2,
+                "entry_buildup": 6
+            },
+            "triple_ma": {
+                "s1": 5,
+                "s2": 15,
+                "s3": 30
+            },
+            "generate_market_bottom_signals": {
+                "length": 2,
+                "bbl": 15,
+                "mult": 2
+            },
+            "williams_r_signals": {
+                "period": 14,
+                "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                "lookback": 30,
+                "ma_period": 20,
+                "atr_period": 14,
+                "atr_mult": 0.5
+            },
+            "compute_two_pole_oscillator": {
+                "filt_len": 20,
+                "sma_len": 25,
+                "threshold": 0.01
+            },
+            "adaptive_t3_signals": {
+                "rsi_len": 25,
+                "min_len": 5,
+                "max_len": 40,
+                "v": 0.5,
+                "volat": 40
+            },
+            "next_pivot_signals": {
+                "hist_len": 10,
+                "fore_len": 20,
+                "lookback": 30,
+                "method": 0
+            },
+            "market_sentiment_signals": {
+                "rsi_len": 14,
+                "stoch_k_len": 14,
+                "stoch_k_smooth": 3,
+                "cci_len": 20,
+                "bbp_len": 13,
+                "ma_len": 20,
+                "st_len": 10,
+                "st_mult": 3,
+                "reg_len": 25,
+                "ms_len": 5
+            },
+            "ema_pivot_signals": {
+                "ema_length": 45,
+                "backcandles": 15,
+                "pivot_window": 10
+            },
+            "harsi_strategy": {
+                "rsi_period": 14,
+                "fastk_period": 14,
+                "slowk_period": 3,
+                "slowk_matype": 0,
+                "slowd_period": 3,
+                "slowd_matype": 0,
+                "ema_period": 30,
+                "volume_sma_slow": 20,
+                "volume_sma_fast": 5,
+                "adx_p_period": 14,
+                "adx_m_period": 14
+            }
+        },
+        "30min": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 0,
+                    "use_adx": 1,
+                    "use_vortex": 0,
+                    "ost": 86,
+                    "rsi_period": 16,
+                    "fastk_period": 29,
+                    "slowk_period": 7,
+                    "slowk_matype": 1,
+                    "slowd_period": 3,
+                    "slowd_matype": 2,
+                    "ema_period": 15,
+                    "volume_sma_slow": 27,
+                    "volume_sma_fast": 5,
+                    "adx_p_period": 16,
+                    "adx_m_period": 13
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 35,
+                    "backcandles": 9,
+                    "pivot_window": 4
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 11,
+                    "stoch_k_len": 13,
+                    "stoch_k_smooth": 4,
+                    "cci_len": 21,
+                    "bbp_len": 9,
+                    "ma_len": 13,
+                    "st_len": 14,
+                    "st_mult": 3,
+                    "reg_len": 38,
+                    "ms_len": 8,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 14,
+                    "fore_len": 15,
+                    "lookback": 146,
+                    "method": 2,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 27,
+                    "min_len": 7,
+                    "max_len": 45,
+                    "v": 0.7542252612373025,
+                    "volat": 43,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 5,
+                    "sma_len": 29,
+                    "threshold": 0.25745695696654125,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 21,
+                    "atr_period": 27,
+                    "atr_mult": 0.8196954469236253,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 28,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 20,
+                    "bbl": 10,
+                    "mult": 1.3834926491236272
+            },
+            "triple_ma": {
+                    "s1": 3,
+                    "s2": 13,
+                    "s3": 41
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 30,
+                    "range_len": 10,
+                    "atr_len": 14,
+                    "atr_mult": 0.5457260170975923,
+                    "entry_buildup": 7
+            }
+        },
+        "1h": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 79,
+                    "rsi_period": 11,
+                    "fastk_period": 22,
+                    "slowk_period": 5,
+                    "slowk_matype": 3,
+                    "slowd_period": 5,
+                    "slowd_matype": 1,
+                    "ema_period": 29,
+                    "volume_sma_slow": 24,
+                    "volume_sma_fast": 10,
+                    "adx_p_period": 11,
+                    "adx_m_period": 30
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 32,
+                    "backcandles": 3,
+                    "pivot_window": 8
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 8,
+                    "stoch_k_len": 25,
+                    "stoch_k_smooth": 4,
+                    "cci_len": 26,
+                    "bbp_len": 18,
+                    "ma_len": 30,
+                    "st_len": 16,
+                    "st_mult": 1,
+                    "reg_len": 12,
+                    "ms_len": 3,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 18,
+                    "fore_len": 10,
+                    "lookback": 122,
+                    "method": 2,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 31,
+                    "min_len": 7,
+                    "max_len": 58,
+                    "v": 0.3824114417422178,
+                    "volat": 40,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 22,
+                    "sma_len": 21,
+                    "threshold": 0.05145030102756267,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 6,
+                    "ma_period": 46,
+                    "atr_period": 20,
+                    "atr_mult": 0.20414558423669144,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 21,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 13,
+                    "bbl": 25,
+                    "mult": 1.2290018153537634
+            },
+            "triple_ma": {
+                    "s1": 11,
+                    "s2": 15,
+                    "s3": 27
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 5,
+                    "range_len": 7,
+                    "atr_len": 8,
+                    "atr_mult": 0.513871791162453,
+                    "entry_buildup": 10
+            }
+        },
+        "2h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 75,
+                    "rsi_period": 26,
+                    "fastk_period": 21,
+                    "slowk_period": 4,
+                    "slowk_matype": 2,
+                    "slowd_period": 3,
+                    "slowd_matype": 2,
+                    "ema_period": 45,
+                    "volume_sma_slow": 24,
+                    "volume_sma_fast": 4,
+                    "adx_p_period": 10,
+                    "adx_m_period": 13
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 20,
+                    "backcandles": 2,
+                    "pivot_window": 3
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 27,
+                    "stoch_k_len": 19,
+                    "stoch_k_smooth": 5,
+                    "cci_len": 18,
+                    "bbp_len": 24,
+                    "ma_len": 21,
+                    "st_len": 16,
+                    "st_mult": 4,
+                    "reg_len": 37,
+                    "ms_len": 7,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 15,
+                    "fore_len": 26,
+                    "lookback": 121,
+                    "method": 2,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 13,
+                    "min_len": 3,
+                    "max_len": 60,
+                    "v": 0.5920278827744573,
+                    "volat": 25,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 6,
+                    "sma_len": 12,
+                    "threshold": 0.2614411187454542,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 3,
+                    "ma_period": 2,
+                    "atr_period": 22,
+                    "atr_mult": 0.3663575733862061,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 13,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 5,
+                    "bbl": 20,
+                    "mult": 1.0701809344570896
+            },
+            "triple_ma": {
+                    "s1": 3,
+                    "s2": 23,
+                    "s3": 32
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 20,
+                    "range_len": 11,
+                    "atr_len": 28,
+                    "atr_mult": 0.5455606107744326,
+                    "entry_buildup": 10
+            }
+        },
+        "3h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 75,
+                    "rsi_period": 13,
+                    "fastk_period": 13,
+                    "slowk_period": 6,
+                    "slowk_matype": 2,
+                    "slowd_period": 3,
+                    "slowd_matype": 3,
+                    "ema_period": 16,
+                    "volume_sma_slow": 27,
+                    "volume_sma_fast": 3,
+                    "adx_p_period": 27,
+                    "adx_m_period": 14
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 10,
+                    "backcandles": 4,
+                    "pivot_window": 2
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 6,
+                    "stoch_k_len": 9,
+                    "stoch_k_smooth": 4,
+                    "cci_len": 29,
+                    "bbp_len": 16,
+                    "ma_len": 8,
+                    "st_len": 17,
+                    "st_mult": 3,
+                    "reg_len": 45,
+                    "ms_len": 6,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 10,
+                    "fore_len": 12,
+                    "lookback": 136,
+                    "method": 0,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 24,
+                    "min_len": 4,
+                    "max_len": 49,
+                    "v": 0.6420099866365356,
+                    "volat": 57,
+                    "persist": 5,
+                    "lag": 1
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 5,
+                    "sma_len": 12,
+                    "threshold": 0.05138563288768189,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 19,
+                    "atr_period": 16,
+                    "atr_mult": 0.2590842462677475,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 23,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 3,
+                    "bbl": 25,
+                    "mult": 1.1600652312358084
+            },
+            "triple_ma": {
+                    "s1": 3,
+                    "s2": 13,
+                    "s3": 33
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 8,
+                    "range_len": 6,
+                    "atr_len": 5,
+                    "atr_mult": 0.5756609774206896,
+                    "entry_buildup": 9
+            }
+        },
+        "4h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 76,
+                    "rsi_period": 13,
+                    "fastk_period": 25,
+                    "slowk_period": 8,
+                    "slowk_matype": 3,
+                    "slowd_period": 4,
+                    "slowd_matype": 3,
+                    "ema_period": 29,
+                    "volume_sma_slow": 20,
+                    "volume_sma_fast": 10,
+                    "adx_p_period": 26,
+                    "adx_m_period": 20
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 11,
+                    "backcandles": 2,
+                    "pivot_window": 13
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 6,
+                    "stoch_k_len": 19,
+                    "stoch_k_smooth": 5,
+                    "cci_len": 19,
+                    "bbp_len": 8,
+                    "ma_len": 11,
+                    "st_len": 8,
+                    "st_mult": 2,
+                    "reg_len": 50,
+                    "ms_len": 3,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 11,
+                    "fore_len": 11,
+                    "lookback": 75,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 30,
+                    "min_len": 8,
+                    "max_len": 47,
+                    "v": 0.31973961566339226,
+                    "volat": 54,
+                    "persist": 5,
+                    "lag": 1
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 5,
+                    "sma_len": 10,
+                    "threshold": 0.4800011513117857,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 3,
+                    "ma_period": 26,
+                    "atr_period": 16,
+                    "atr_mult": 0.20220274547750566,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 11,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 4,
+                    "bbl": 6,
+                    "mult": 1.0691504163320118
+            },
+            "triple_ma": {
+                    "s1": 5,
+                    "s2": 24,
+                    "s3": 40
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 9,
+                    "range_len": 5,
+                    "atr_len": 8,
+                    "atr_mult": 0.576638751581241,
+                    "entry_buildup": 6
+            }
+        },
+        "5h": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 76,
+                    "rsi_period": 26,
+                    "fastk_period": 23,
+                    "slowk_period": 3,
+                    "slowk_matype": 0,
+                    "slowd_period": 7,
+                    "slowd_matype": 3,
+                    "ema_period": 11,
+                    "volume_sma_slow": 29,
+                    "volume_sma_fast": 7,
+                    "adx_p_period": 18,
+                    "adx_m_period": 20
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 11,
+                    "backcandles": 3,
+                    "pivot_window": 18
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 5,
+                    "stoch_k_len": 14,
+                    "stoch_k_smooth": 4,
+                    "cci_len": 16,
+                    "bbp_len": 17,
+                    "ma_len": 30,
+                    "st_len": 12,
+                    "st_mult": 3,
+                    "reg_len": 27,
+                    "ms_len": 10,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 16,
+                    "fore_len": 23,
+                    "lookback": 62,
+                    "method": 2,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 10,
+                    "min_len": 7,
+                    "max_len": 28,
+                    "v": 0.5399920412146393,
+                    "volat": 55,
+                    "persist": 5,
+                    "lag": 1
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 6,
+                    "sma_len": 10,
+                    "threshold": 0.07911672087916757,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 21,
+                    "atr_period": 13,
+                    "atr_mult": 0.2702529288731215,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 10,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 3,
+                    "bbl": 4,
+                    "mult": 1.1648421240629705
+            },
+            "triple_ma": {
+                    "s1": 4,
+                    "s2": 25,
+                    "s3": 21
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 20,
+                    "range_len": 5,
+                    "atr_len": 7,
+                    "atr_mult": 0.5001279971655702,
+                    "entry_buildup": 9
+            }
+        }
+    },
+    "doge": {
+        "default": {
+            "close_to_close_volatility": {
+                "window": 5
+            },
+            "yang_zhang_volatility": {
+                "k": 0.34
+            },
+            "detect_head_shoulder": {
+                "shoulder_tolerance": 0.03,
+                "min_head_to_shoulder_diff": 0.01
+            },
+            "detect_multiple_tops_bottoms": {
+                "window": 5
+            },
+            "detect_triangle_pattern": {
+                "window": 7
+            },
+            "detect_wedge": {
+                "window": 7
+            },
+            "detect_channel": {
+                "window": 10,
+                "channel_range_threshold": 0.03
+            },
+            "detect_double_top_bottom": {
+                "min_peak_distance": 4,
+                "threshold": 0.02,
+                "min_valley_diff": 0.01,
+                "stamp": "confirmation"
+            },
+            "find_pivots": {
+                "window": 5
+            },
+            "power_law_corridor": {
+                "price_column": "Close",
+                "window": 10,
+                "sigma_multiplier": 1.0
+            },
+            "detect_liquidity_grabs": {
+                "lookback": 10,
+                "min_wick_ratio": 0.6,
+                "confirm_next_bar": false
+            },
+            "generate_ifvg_signals": {
+                "lookback_sweep": 20,
+                "require_sweep": false
+            },
+            "head_and_shoulders_top_signal": {
+                "bars_left": 3,
+                "tolerance": 0.02,
+                "warmup": 9
+            },
+            "detect_pennants": {
+                "bars_left": 3,
+                "slope_tol": 0.02,
+                "flat_tol": 0.02,
+                "warmup": 9
+            },
+            "mark_bwab_signals": {
+                "ma_len": 30,
+                "range_len": 10,
+                "atr_len": 18,
+                "atr_mult": 1.2,
+                "entry_buildup": 6
+            },
+            "triple_ma": {
+                "s1": 5,
+                "s2": 15,
+                "s3": 30
+            },
+            "generate_market_bottom_signals": {
+                "length": 2,
+                "bbl": 15,
+                "mult": 2
+            },
+            "williams_r_signals": {
+                "period": 14,
+                "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                "lookback": 30,
+                "ma_period": 20,
+                "atr_period": 14,
+                "atr_mult": 0.5
+            },
+            "compute_two_pole_oscillator": {
+                "filt_len": 20,
+                "sma_len": 25,
+                "threshold": 0.01
+            },
+            "adaptive_t3_signals": {
+                "rsi_len": 25,
+                "min_len": 5,
+                "max_len": 40,
+                "v": 0.5,
+                "volat": 40
+            },
+            "next_pivot_signals": {
+                "hist_len": 10,
+                "fore_len": 20,
+                "lookback": 30,
+                "method": 0
+            },
+            "market_sentiment_signals": {
+                "rsi_len": 14,
+                "stoch_k_len": 14,
+                "stoch_k_smooth": 3,
+                "cci_len": 20,
+                "bbp_len": 13,
+                "ma_len": 20,
+                "st_len": 10,
+                "st_mult": 3,
+                "reg_len": 25,
+                "ms_len": 5
+            },
+            "ema_pivot_signals": {
+                "ema_length": 45,
+                "backcandles": 15,
+                "pivot_window": 10
+            },
+            "harsi_strategy": {
+                "rsi_period": 14,
+                "fastk_period": 14,
+                "slowk_period": 3,
+                "slowk_matype": 0,
+                "slowd_period": 3,
+                "slowd_matype": 0,
+                "ema_period": 30,
+                "volume_sma_slow": 20,
+                "volume_sma_fast": 5,
+                "adx_p_period": 14,
+                "adx_m_period": 14
+            }
+        },
+        "30min": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 1,
+                    "ost": 83,
+                    "rsi_period": 14,
+                    "fastk_period": 11,
+                    "slowk_period": 3,
+                    "slowk_matype": 2,
+                    "slowd_period": 7,
+                    "slowd_matype": 0,
+                    "ema_period": 40,
+                    "volume_sma_slow": 22,
+                    "volume_sma_fast": 9,
+                    "adx_p_period": 11,
+                    "adx_m_period": 22
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 26,
+                    "backcandles": 13,
+                    "pivot_window": 16
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 10,
+                    "stoch_k_len": 18,
+                    "stoch_k_smooth": 2,
+                    "cci_len": 9,
+                    "bbp_len": 18,
+                    "ma_len": 16,
+                    "st_len": 6,
+                    "st_mult": 3,
+                    "reg_len": 23,
+                    "ms_len": 4,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 20,
+                    "fore_len": 10,
+                    "lookback": 198,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 31,
+                    "min_len": 10,
+                    "max_len": 40,
+                    "v": 0.7584465427240652,
+                    "volat": 36,
+                    "persist": 5,
+                    "lag": 3
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 10,
+                    "sma_len": 22,
+                    "threshold": 0.05849722354583572,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 4,
+                    "ma_period": 23,
+                    "atr_period": 23,
+                    "atr_mult": 0.7132734161114094,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 20,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 17,
+                    "bbl": 16,
+                    "mult": 1.950464360896505
+            },
+            "triple_ma": {
+                    "s1": 15,
+                    "s2": 10,
+                    "s3": 3938160696729558
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 47,
+                    "range_len": 13,
+                    "atr_len": 6,
+                    "atr_mult": 0.5625905275098829,
+                    "entry_buildup": 5
+            }
+        },
+        "1h": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 1,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 78,
+                    "rsi_period": 21,
+                    "fastk_period": 11,
+                    "slowk_period": 6,
+                    "slowk_matype": 3,
+                    "slowd_period": 4,
+                    "slowd_matype": 1,
+                    "ema_period": 35,
+                    "volume_sma_slow": 20,
+                    "volume_sma_fast": 7,
+                    "adx_p_period": 11,
+                    "adx_m_period": 10
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 10,
+                    "backcandles": 7,
+                    "pivot_window": 20
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 18,
+                    "stoch_k_len": 14,
+                    "stoch_k_smooth": 1,
+                    "cci_len": 18,
+                    "bbp_len": 27,
+                    "ma_len": 15,
+                    "st_len": 16,
+                    "st_mult": 4,
+                    "reg_len": 20,
+                    "ms_len": 6,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 20,
+                    "fore_len": 12,
+                    "lookback": 196,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 38,
+                    "min_len": 3,
+                    "max_len": 16,
+                    "v": 0.5837662792747198,
+                    "volat": 36,
+                    "persist": 5,
+                    "lag": 3
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 5,
+                    "sma_len": 12,
+                    "threshold": 0.05165230035004415,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 47,
+                    "atr_period": 18,
+                    "atr_mult": 1.230092194737898,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 30,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 4,
+                    "bbl": 6,
+                    "mult": 1.6850604574571226
+            },
+            "triple_ma": {
+                    "s1": 10,
+                    "s2": 19,
+                    "s3": 20
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 14,
+                    "range_len": 9,
+                    "atr_len": 13,
+                    "atr_mult": 0.6894176480129338,
+                    "entry_buildup": 10
+            }
+        },
+        "2h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 81,
+                    "rsi_period": 13,
+                    "fastk_period": 24,
+                    "slowk_period": 10,
+                    "slowk_matype": 2,
+                    "slowd_period": 8,
+                    "slowd_matype": 3,
+                    "ema_period": 17,
+                    "volume_sma_slow": 12,
+                    "volume_sma_fast": 4,
+                    "adx_p_period": 17,
+                    "adx_m_period": 20
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 29,
+                    "backcandles": 15,
+                    "pivot_window": 14
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 11,
+                    "stoch_k_len": 25,
+                    "stoch_k_smooth": 5,
+                    "cci_len": 27,
+                    "bbp_len": 29,
+                    "ma_len": 7,
+                    "st_len": 16,
+                    "st_mult": 1,
+                    "reg_len": 13,
+                    "ms_len": 5,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 19,
+                    "fore_len": 11,
+                    "lookback": 124,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 13,
+                    "min_len": 10,
+                    "max_len": 34,
+                    "v": 0.5854477986911567,
+                    "volat": 49,
+                    "persist": 5,
+                    "lag": 1
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 22,
+                    "sma_len": 20,
+                    "threshold": 0.0755899530423257,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 48,
+                    "atr_period": 28,
+                    "atr_mult": 0.48093034600283274,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 16,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 11,
+                    "bbl": 7,
+                    "mult": 1.2947017218110914
+            },
+            "triple_ma": {
+                    "s1": 10,
+                    "s2": 27,
+                    "s3": 35
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 7,
+                    "range_len": 23,
+                    "atr_len": 23,
+                    "atr_mult": 0.5018462249022282,
+                    "entry_buildup": 8
+            }
+        },
+        "3h": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 1,
+                    "use_adx": 0,
+                    "use_vortex": 1,
+                    "ost": 81,
+                    "rsi_period": 16,
+                    "fastk_period": 13,
+                    "slowk_period": 3,
+                    "slowk_matype": 2,
+                    "slowd_period": 3,
+                    "slowd_matype": 3,
+                    "ema_period": 49,
+                    "volume_sma_slow": 26,
+                    "volume_sma_fast": 10,
+                    "adx_p_period": 13,
+                    "adx_m_period": 27
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 10,
+                    "backcandles": 4,
+                    "pivot_window": 2
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 6,
+                    "stoch_k_len": 15,
+                    "stoch_k_smooth": 2,
+                    "cci_len": 26,
+                    "bbp_len": 14,
+                    "ma_len": 25,
+                    "st_len": 7,
+                    "st_mult": 2,
+                    "reg_len": 16,
+                    "ms_len": 9,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 12,
+                    "fore_len": 25,
+                    "lookback": 181,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 13,
+                    "min_len": 5,
+                    "max_len": 35,
+                    "v": 0.7852398394557804,
+                    "volat": 26,
+                    "persist": 5,
+                    "lag": 2
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 12,
+                    "sma_len": 14,
+                    "threshold": 0.10896120531270533,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 24,
+                    "atr_period": 17,
+                    "atr_mult": 0.2657300504906802,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 10,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 10,
+                    "bbl": 27,
+                    "mult": 1.2109795554242782
+            },
+            "triple_ma": {
+                    "s1": 13,
+                    "s2": 16,
+                    "s3": 24
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 6,
+                    "range_len": 20,
+                    "atr_len": 15,
+                    "atr_mult": 0.5014577871378263,
+                    "entry_buildup": 9
+            }
+        },
+        "4h": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 0,
+                    "use_adx": 1,
+                    "use_vortex": 1,
+                    "ost": 70,
+                    "rsi_period": 28,
+                    "fastk_period": 27,
+                    "slowk_period": 10,
+                    "slowk_matype": 1,
+                    "slowd_period": 7,
+                    "slowd_matype": 3,
+                    "ema_period": 46,
+                    "volume_sma_slow": 18,
+                    "volume_sma_fast": 7,
+                    "adx_p_period": 11,
+                    "adx_m_period": 24
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 10,
+                    "backcandles": 2,
+                    "pivot_window": 16
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 25,
+                    "stoch_k_len": 18,
+                    "stoch_k_smooth": 1,
+                    "cci_len": 15,
+                    "bbp_len": 18,
+                    "ma_len": 20,
+                    "st_len": 5,
+                    "st_mult": 2,
+                    "reg_len": 34,
+                    "ms_len": 6,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 18,
+                    "fore_len": 30,
+                    "lookback": 138,
+                    "method": 0,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 20,
+                    "min_len": 8,
+                    "max_len": 40,
+                    "v": 0.5983195712518099,
+                    "volat": 30,
+                    "persist": 5,
+                    "lag": 1
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 6,
+                    "sma_len": 10,
+                    "threshold": 0.0712342924246748,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 3,
+                    "ma_period": 39,
+                    "atr_period": 6,
+                    "atr_mult": 0.24869558268426112,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 23,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 21,
+                    "bbl": 26,
+                    "mult": 1.124698454489354
+            },
+            "triple_ma": {
+                    "s1": 14,
+                    "s2": 12,
+                    "s3": 41
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 12,
+                    "range_len": 16,
+                    "atr_len": 18,
+                    "atr_mult": 0.500045811314604,
+                    "entry_buildup": 6
+            }
+        },
+        "5h": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 71,
+                    "rsi_period": 14,
+                    "fastk_period": 20,
+                    "slowk_period": 4,
+                    "slowk_matype": 1,
+                    "slowd_period": 5,
+                    "slowd_matype": 2,
+                    "ema_period": 11,
+                    "volume_sma_slow": 28,
+                    "volume_sma_fast": 10,
+                    "adx_p_period": 12,
+                    "adx_m_period": 14
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 10,
+                    "backcandles": 3,
+                    "pivot_window": 5
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 30,
+                    "stoch_k_len": 20,
+                    "stoch_k_smooth": 5,
+                    "cci_len": 14,
+                    "bbp_len": 30,
+                    "ma_len": 12,
+                    "st_len": 8,
+                    "st_mult": 3,
+                    "reg_len": 7,
+                    "ms_len": 6,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 16,
+                    "fore_len": 14,
+                    "lookback": 126,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 11,
+                    "min_len": 9,
+                    "max_len": 51,
+                    "v": 0.40055473206080827,
+                    "volat": 36,
+                    "persist": 5,
+                    "lag": 2
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 6,
+                    "sma_len": 12,
+                    "threshold": 0.25905046817529587,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 3,
+                    "ma_period": 28,
+                    "atr_period": 17,
+                    "atr_mult": 0.23868935140948883,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 18,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 7,
+                    "bbl": 20,
+                    "mult": 1.000442742731984
+            },
+            "triple_ma": {
+                    "s1": 3,
+                    "s2": 20,
+                    "s3": 21
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 19,
+                    "range_len": 9,
+                    "atr_len": 8,
+                    "atr_mult": 0.5261279267431873,
+                    "entry_buildup": 9
+            }
+        }
+    },
+    "ada": {
+        "default": {
+            "close_to_close_volatility": {
+                "window": 5
+            },
+            "yang_zhang_volatility": {
+                "k": 0.34
+            },
+            "detect_head_shoulder": {
+                "shoulder_tolerance": 0.03,
+                "min_head_to_shoulder_diff": 0.01
+            },
+            "detect_multiple_tops_bottoms": {
+                "window": 5
+            },
+            "detect_triangle_pattern": {
+                "window": 7
+            },
+            "detect_wedge": {
+                "window": 7
+            },
+            "detect_channel": {
+                "window": 10,
+                "channel_range_threshold": 0.03
+            },
+            "detect_double_top_bottom": {
+                "min_peak_distance": 4,
+                "threshold": 0.02,
+                "min_valley_diff": 0.01,
+                "stamp": "confirmation"
+            },
+            "find_pivots": {
+                "window": 5
+            },
+            "power_law_corridor": {
+                "price_column": "Close",
+                "window": 10,
+                "sigma_multiplier": 1.0
+            },
+            "detect_liquidity_grabs": {
+                "lookback": 10,
+                "min_wick_ratio": 0.6,
+                "confirm_next_bar": false
+            },
+            "generate_ifvg_signals": {
+                "lookback_sweep": 20,
+                "require_sweep": false
+            },
+            "head_and_shoulders_top_signal": {
+                "bars_left": 3,
+                "tolerance": 0.02,
+                "warmup": 9
+            },
+            "detect_pennants": {
+                "bars_left": 3,
+                "slope_tol": 0.02,
+                "flat_tol": 0.02,
+                "warmup": 9
+            },
+            "mark_bwab_signals": {
+                "ma_len": 30,
+                "range_len": 10,
+                "atr_len": 18,
+                "atr_mult": 1.2,
+                "entry_buildup": 6
+            },
+            "triple_ma": {
+                "s1": 5,
+                "s2": 15,
+                "s3": 30
+            },
+            "generate_market_bottom_signals": {
+                "length": 2,
+                "bbl": 15,
+                "mult": 2
+            },
+            "williams_r_signals": {
+                "period": 14,
+                "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                "lookback": 30,
+                "ma_period": 20,
+                "atr_period": 14,
+                "atr_mult": 0.5
+            },
+            "compute_two_pole_oscillator": {
+                "filt_len": 20,
+                "sma_len": 25,
+                "threshold": 0.01
+            },
+            "adaptive_t3_signals": {
+                "rsi_len": 25,
+                "min_len": 5,
+                "max_len": 40,
+                "v": 0.5,
+                "volat": 40
+            },
+            "next_pivot_signals": {
+                "hist_len": 10,
+                "fore_len": 20,
+                "lookback": 30,
+                "method": 0
+            },
+            "market_sentiment_signals": {
+                "rsi_len": 14,
+                "stoch_k_len": 14,
+                "stoch_k_smooth": 3,
+                "cci_len": 20,
+                "bbp_len": 13,
+                "ma_len": 20,
+                "st_len": 10,
+                "st_mult": 3,
+                "reg_len": 25,
+                "ms_len": 5
+            },
+            "ema_pivot_signals": {
+                "ema_length": 45,
+                "backcandles": 15,
+                "pivot_window": 10
+            },
+            "harsi_strategy": {
+                "rsi_period": 14,
+                "fastk_period": 14,
+                "slowk_period": 3,
+                "slowk_matype": 0,
+                "slowd_period": 3,
+                "slowd_matype": 0,
+                "ema_period": 30,
+                "volume_sma_slow": 20,
+                "volume_sma_fast": 5,
+                "adx_p_period": 14,
+                "adx_m_period": 14
+            }
+        },
+        "30min": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 0,
+                    "use_adx": 1,
+                    "use_vortex": 1,
+                    "ost": 79,
+                    "rsi_period": 12,
+                    "fastk_period": 24,
+                    "slowk_period": 4,
+                    "slowk_matype": 3,
+                    "slowd_period": 9,
+                    "slowd_matype": 2,
+                    "ema_period": 49,
+                    "volume_sma_slow": 12,
+                    "volume_sma_fast": 9,
+                    "adx_p_period": 13,
+                    "adx_m_period": 20
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 40,
+                    "backcandles": 17,
+                    "pivot_window": 9
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 6,
+                    "stoch_k_len": 28,
+                    "stoch_k_smooth": 2,
+                    "cci_len": 25,
+                    "bbp_len": 22,
+                    "ma_len": 12,
+                    "st_len": 13,
+                    "st_mult": 4,
+                    "reg_len": 43,
+                    "ms_len": 7,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 20,
+                    "fore_len": 15,
+                    "lookback": 199,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 35,
+                    "min_len": 10,
+                    "max_len": 29,
+                    "v": 0.40215832523401646,
+                    "volat": 23,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 6,
+                    "sma_len": 36,
+                    "threshold": 0.3812379609362079,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 14,
+                    "ma_period": 10,
+                    "atr_period": 14,
+                    "atr_mult": 0.5153051862938669,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 29,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 17,
+                    "bbl": 13,
+                    "mult": 2.401395572469891
+            },
+            "triple_ma": {
+                    "s1": 15,
+                    "s2": 10,
+                    "s3": 488
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 9,
+                    "range_len": 20,
+                    "atr_len": 12,
+                    "atr_mult": 0.503776582721648,
+                    "entry_buildup": 3
+            }
+        },
+        "1h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 1,
+                    "use_adx": 1,
+                    "use_vortex": 1,
+                    "ost": 87,
+                    "rsi_period": 22,
+                    "fastk_period": 23,
+                    "slowk_period": 7,
+                    "slowk_matype": 2,
+                    "slowd_period": 3,
+                    "slowd_matype": 0,
+                    "ema_period": 14,
+                    "volume_sma_slow": 20,
+                    "volume_sma_fast": 9,
+                    "adx_p_period": 11,
+                    "adx_m_period": 12
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 58,
+                    "backcandles": 16,
+                    "pivot_window": 20
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 5,
+                    "stoch_k_len": 18,
+                    "stoch_k_smooth": 5,
+                    "cci_len": 26,
+                    "bbp_len": 16,
+                    "ma_len": 11,
+                    "st_len": 14,
+                    "st_mult": 5,
+                    "reg_len": 33,
+                    "ms_len": 5,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 20,
+                    "fore_len": 20,
+                    "lookback": 192,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 13,
+                    "min_len": 10,
+                    "max_len": 60,
+                    "v": 0.360745995267868,
+                    "volat": 28,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 27,
+                    "sma_len": 34,
+                    "threshold": 0.46930588291525266,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 44,
+                    "ma_period": 3,
+                    "atr_period": 28,
+                    "atr_mult": 0.30672232388622855,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 23,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 26,
+                    "bbl": 21,
+                    "mult": 1.5607526993756837
+            },
+            "triple_ma": {
+                    "s1": 11,
+                    "s2": 19,
+                    "s3": 49316006509166485
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 13,
+                    "range_len": 24,
+                    "atr_len": 20,
+                    "atr_mult": 0.5071412415541384,
+                    "entry_buildup": 10
+            }
+        },
+        "2h": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 1,
+                    "use_adx": 0,
+                    "use_vortex": 1,
+                    "ost": 76,
+                    "rsi_period": 21,
+                    "fastk_period": 22,
+                    "slowk_period": 9,
+                    "slowk_matype": 3,
+                    "slowd_period": 5,
+                    "slowd_matype": 0,
+                    "ema_period": 26,
+                    "volume_sma_slow": 16,
+                    "volume_sma_fast": 7,
+                    "adx_p_period": 21,
+                    "adx_m_period": 20
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 18,
+                    "backcandles": 11,
+                    "pivot_window": 13
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 8,
+                    "stoch_k_len": 9,
+                    "stoch_k_smooth": 5,
+                    "cci_len": 26,
+                    "bbp_len": 20,
+                    "ma_len": 7,
+                    "st_len": 13,
+                    "st_mult": 3,
+                    "reg_len": 27,
+                    "ms_len": 4,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 20,
+                    "fore_len": 22,
+                    "lookback": 193,
+                    "method": 0,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 10,
+                    "min_len": 4,
+                    "max_len": 43,
+                    "v": 0.7994379442295027,
+                    "volat": 59,
+                    "persist": 5,
+                    "lag": 2
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 26,
+                    "sma_len": 16,
+                    "threshold": 0.30167141592052943,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 5,
+                    "ma_period": 44,
+                    "atr_period": 7,
+                    "atr_mult": 0.24836377601280085,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 10,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 3,
+                    "bbl": 9,
+                    "mult": 1.2192031261560388
+            },
+            "triple_ma": {
+                    "s1": 13,
+                    "s2": 15,
+                    "s3": 43
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 31,
+                    "range_len": 6,
+                    "atr_len": 20,
+                    "atr_mult": 0.501468332220857,
+                    "entry_buildup": 6
+            }
+        },
+        "3h": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 78,
+                    "rsi_period": 11,
+                    "fastk_period": 15,
+                    "slowk_period": 4,
+                    "slowk_matype": 2,
+                    "slowd_period": 10,
+                    "slowd_matype": 3,
+                    "ema_period": 11,
+                    "volume_sma_slow": 24,
+                    "volume_sma_fast": 4,
+                    "adx_p_period": 27,
+                    "adx_m_period": 21
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 53,
+                    "backcandles": 5,
+                    "pivot_window": 5
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 18,
+                    "stoch_k_len": 20,
+                    "stoch_k_smooth": 4,
+                    "cci_len": 27,
+                    "bbp_len": 23,
+                    "ma_len": 27,
+                    "st_len": 19,
+                    "st_mult": 4,
+                    "reg_len": 46,
+                    "ms_len": 3,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 16,
+                    "fore_len": 17,
+                    "lookback": 169,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 18,
+                    "min_len": 6,
+                    "max_len": 26,
+                    "v": 0.5950607186328719,
+                    "volat": 31,
+                    "persist": 5,
+                    "lag": 2
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 18,
+                    "sma_len": 15,
+                    "threshold": 0.05058454776202073,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 6,
+                    "ma_period": 3,
+                    "atr_period": 23,
+                    "atr_mult": 0.3847471545619119,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 12,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 6,
+                    "bbl": 12,
+                    "mult": 1.404506368522017
+            },
+            "triple_ma": {
+                    "s1": 11,
+                    "s2": 29,
+                    "s3": 29
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 47,
+                    "range_len": 5,
+                    "atr_len": 9,
+                    "atr_mult": 0.5023804251018212,
+                    "entry_buildup": 5
+            }
+        },
+        "4h": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 75,
+                    "rsi_period": 12,
+                    "fastk_period": 27,
+                    "slowk_period": 8,
+                    "slowk_matype": 2,
+                    "slowd_period": 6,
+                    "slowd_matype": 1,
+                    "ema_period": 13,
+                    "volume_sma_slow": 19,
+                    "volume_sma_fast": 5,
+                    "adx_p_period": 20,
+                    "adx_m_period": 16
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 46,
+                    "backcandles": 3,
+                    "pivot_window": 5
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 7,
+                    "stoch_k_len": 16,
+                    "stoch_k_smooth": 1,
+                    "cci_len": 21,
+                    "bbp_len": 22,
+                    "ma_len": 17,
+                    "st_len": 6,
+                    "st_mult": 1,
+                    "reg_len": 23,
+                    "ms_len": 4,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 14,
+                    "fore_len": 26,
+                    "lookback": 200,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 12,
+                    "min_len": 4,
+                    "max_len": 17,
+                    "v": 0.4503468858676072,
+                    "volat": 29,
+                    "persist": 5,
+                    "lag": 4
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 7,
+                    "sma_len": 39,
+                    "threshold": 0.0660182951291236,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 4,
+                    "ma_period": 42,
+                    "atr_period": 19,
+                    "atr_mult": 0.20098140253355454,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 13,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 15,
+                    "bbl": 28,
+                    "mult": 1.1732172388433173
+            },
+            "triple_ma": {
+                    "s1": 6,
+                    "s2": 30,
+                    "s3": 29
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 9,
+                    "range_len": 5,
+                    "atr_len": 6,
+                    "atr_mult": 0.7544007083707492,
+                    "entry_buildup": 6
+            }
+        },
+        "5h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 1,
+                    "ost": 72,
+                    "rsi_period": 26,
+                    "fastk_period": 22,
+                    "slowk_period": 9,
+                    "slowk_matype": 3,
+                    "slowd_period": 9,
+                    "slowd_matype": 1,
+                    "ema_period": 47,
+                    "volume_sma_slow": 11,
+                    "volume_sma_fast": 6,
+                    "adx_p_period": 24,
+                    "adx_m_period": 19
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 11,
+                    "backcandles": 3,
+                    "pivot_window": 4
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 12,
+                    "stoch_k_len": 29,
+                    "stoch_k_smooth": 4,
+                    "cci_len": 19,
+                    "bbp_len": 11,
+                    "ma_len": 30,
+                    "st_len": 11,
+                    "st_mult": 5,
+                    "reg_len": 31,
+                    "ms_len": 10,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 8,
+                    "fore_len": 26,
+                    "lookback": 98,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 13,
+                    "min_len": 6,
+                    "max_len": 13,
+                    "v": 0.7530795852360808,
+                    "volat": 36,
+                    "persist": 5,
+                    "lag": 3
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 5,
+                    "sma_len": 29,
+                    "threshold": 0.30044973484359566,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 3,
+                    "atr_period": 28,
+                    "atr_mult": 0.2975282625451999,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 18,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 9,
+                    "bbl": 27,
+                    "mult": 1.1073098410129374
+            },
+            "triple_ma": {
+                    "s1": 12,
+                    "s2": 18,
+                    "s3": 21
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 8,
+                    "range_len": 6,
+                    "atr_len": 25,
+                    "atr_mult": 0.5100614680944965,
+                    "entry_buildup": 9
+            }
+        }
+    },
+    "tao": {
+        "default": {
+            "close_to_close_volatility": {
+                "window": 5
+            },
+            "yang_zhang_volatility": {
+                "k": 0.34
+            },
+            "detect_head_shoulder": {
+                "shoulder_tolerance": 0.03,
+                "min_head_to_shoulder_diff": 0.01
+            },
+            "detect_multiple_tops_bottoms": {
+                "window": 5
+            },
+            "detect_triangle_pattern": {
+                "window": 7
+            },
+            "detect_wedge": {
+                "window": 7
+            },
+            "detect_channel": {
+                "window": 10,
+                "channel_range_threshold": 0.03
+            },
+            "detect_double_top_bottom": {
+                "min_peak_distance": 4,
+                "threshold": 0.02,
+                "min_valley_diff": 0.01,
+                "stamp": "confirmation"
+            },
+            "find_pivots": {
+                "window": 5
+            },
+            "power_law_corridor": {
+                "price_column": "Close",
+                "window": 10,
+                "sigma_multiplier": 1.0
+            },
+            "detect_liquidity_grabs": {
+                "lookback": 10,
+                "min_wick_ratio": 0.6,
+                "confirm_next_bar": false
+            },
+            "generate_ifvg_signals": {
+                "lookback_sweep": 20,
+                "require_sweep": false
+            },
+            "head_and_shoulders_top_signal": {
+                "bars_left": 3,
+                "tolerance": 0.02,
+                "warmup": 9
+            },
+            "detect_pennants": {
+                "bars_left": 3,
+                "slope_tol": 0.02,
+                "flat_tol": 0.02,
+                "warmup": 9
+            },
+            "mark_bwab_signals": {
+                "ma_len": 30,
+                "range_len": 10,
+                "atr_len": 18,
+                "atr_mult": 1.2,
+                "entry_buildup": 6
+            },
+            "triple_ma": {
+                "s1": 5,
+                "s2": 15,
+                "s3": 30
+            },
+            "generate_market_bottom_signals": {
+                "length": 2,
+                "bbl": 15,
+                "mult": 2
+            },
+            "williams_r_signals": {
+                "period": 14,
+                "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                "lookback": 30,
+                "ma_period": 20,
+                "atr_period": 14,
+                "atr_mult": 0.5
+            },
+            "compute_two_pole_oscillator": {
+                "filt_len": 20,
+                "sma_len": 25,
+                "threshold": 0.01
+            },
+            "adaptive_t3_signals": {
+                "rsi_len": 25,
+                "min_len": 5,
+                "max_len": 40,
+                "v": 0.5,
+                "volat": 40
+            },
+            "next_pivot_signals": {
+                "hist_len": 10,
+                "fore_len": 20,
+                "lookback": 30,
+                "method": 0
+            },
+            "market_sentiment_signals": {
+                "rsi_len": 14,
+                "stoch_k_len": 14,
+                "stoch_k_smooth": 3,
+                "cci_len": 20,
+                "bbp_len": 13,
+                "ma_len": 20,
+                "st_len": 10,
+                "st_mult": 3,
+                "reg_len": 25,
+                "ms_len": 5
+            },
+            "ema_pivot_signals": {
+                "ema_length": 45,
+                "backcandles": 15,
+                "pivot_window": 10
+            },
+            "harsi_strategy": {
+                "rsi_period": 14,
+                "fastk_period": 14,
+                "slowk_period": 3,
+                "slowk_matype": 0,
+                "slowd_period": 3,
+                "slowd_matype": 0,
+                "ema_period": 30,
+                "volume_sma_slow": 20,
+                "volume_sma_fast": 5,
+                "adx_p_period": 14,
+                "adx_m_period": 14
+            }
+        },
+        "30min": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 0,
+                    "use_adx": 1,
+                    "use_vortex": 1,
+                    "ost": 74,
+                    "rsi_period": 11,
+                    "fastk_period": 29,
+                    "slowk_period": 8,
+                    "slowk_matype": 3,
+                    "slowd_period": 10,
+                    "slowd_matype": 3,
+                    "ema_period": 18,
+                    "volume_sma_slow": 29,
+                    "volume_sma_fast": 4,
+                    "adx_p_period": 10,
+                    "adx_m_period": 24
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 23,
+                    "backcandles": 5,
+                    "pivot_window": 13
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 7,
+                    "stoch_k_len": 24,
+                    "stoch_k_smooth": 2,
+                    "cci_len": 22,
+                    "bbp_len": 12,
+                    "ma_len": 10,
+                    "st_len": 19,
+                    "st_mult": 4,
+                    "reg_len": 9,
+                    "ms_len": 7,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 9,
+                    "fore_len": 28,
+                    "lookback": 50,
+                    "method": 0,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 11,
+                    "min_len": 7,
+                    "max_len": 57,
+                    "v": 0.7160617671341764,
+                    "volat": 52,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 9,
+                    "sma_len": 16,
+                    "threshold": 0.1735440773066516,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 6,
+                    "atr_period": 10,
+                    "atr_mult": 0.3075493346120687,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 12,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 4,
+                    "bbl": 13,
+                    "mult": 1.1369637758839057
+            },
+            "triple_ma": {
+                    "s1": 7,
+                    "s2": 23,
+                    "s3": 21
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 5,
+                    "range_len": 18,
+                    "atr_len": 26,
+                    "atr_mult": 0.5000269831439835,
+                    "entry_buildup": 9
+            }
+        },
+        "1h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 72,
+                    "rsi_period": 30,
+                    "fastk_period": 26,
+                    "slowk_period": 6,
+                    "slowk_matype": 2,
+                    "slowd_period": 4,
+                    "slowd_matype": 3,
+                    "ema_period": 39,
+                    "volume_sma_slow": 28,
+                    "volume_sma_fast": 6,
+                    "adx_p_period": 25,
+                    "adx_m_period": 29
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 10,
+                    "backcandles": 5,
+                    "pivot_window": 8
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 5,
+                    "stoch_k_len": 28,
+                    "stoch_k_smooth": 1,
+                    "cci_len": 21,
+                    "bbp_len": 24,
+                    "ma_len": 22,
+                    "st_len": 9,
+                    "st_mult": 2,
+                    "reg_len": 5,
+                    "ms_len": 3,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 5,
+                    "fore_len": 26,
+                    "lookback": 75,
+                    "method": 2,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 15,
+                    "min_len": 10,
+                    "max_len": 48,
+                    "v": 0.6500430686064445,
+                    "volat": 22,
+                    "persist": 5,
+                    "lag": 1
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 6,
+                    "sma_len": 11,
+                    "threshold": 0.2935986926645591,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 4,
+                    "ma_period": 48,
+                    "atr_period": 17,
+                    "atr_mult": 0.31800424011428174,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 15,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 5,
+                    "bbl": 7,
+                    "mult": 1.125389087651949
+            },
+            "triple_ma": {
+                    "s1": 8,
+                    "s2": 20,
+                    "s3": 27
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 5,
+                    "range_len": 7,
+                    "atr_len": 6,
+                    "atr_mult": 0.5524340435178344,
+                    "entry_buildup": 8
+            }
+        },
+        "2h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 1,
+                    "ost": 71,
+                    "rsi_period": 12,
+                    "fastk_period": 11,
+                    "slowk_period": 6,
+                    "slowk_matype": 3,
+                    "slowd_period": 3,
+                    "slowd_matype": 3,
+                    "ema_period": 21,
+                    "volume_sma_slow": 10,
+                    "volume_sma_fast": 10,
+                    "adx_p_period": 28,
+                    "adx_m_period": 10
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 10,
+                    "backcandles": 3,
+                    "pivot_window": 19
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 7,
+                    "stoch_k_len": 28,
+                    "stoch_k_smooth": 3,
+                    "cci_len": 30,
+                    "bbp_len": 16,
+                    "ma_len": 29,
+                    "st_len": 16,
+                    "st_mult": 3,
+                    "reg_len": 7,
+                    "ms_len": 4,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 6,
+                    "fore_len": 22,
+                    "lookback": 54,
+                    "method": 0,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 11,
+                    "min_len": 9,
+                    "max_len": 53,
+                    "v": 0.6025708847837645,
+                    "volat": 30,
+                    "persist": 5,
+                    "lag": 1
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 11,
+                    "sma_len": 13,
+                    "threshold": 0.0859769769512361,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 45,
+                    "atr_period": 11,
+                    "atr_mult": 0.2744934067077662,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 10,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 3,
+                    "bbl": 4,
+                    "mult": 1.0801612643817013
+            },
+            "triple_ma": {
+                    "s1": 3,
+                    "s2": 13,
+                    "s3": 25
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 9,
+                    "range_len": 6,
+                    "atr_len": 18,
+                    "atr_mult": 0.5004880588426255,
+                    "entry_buildup": 6
+            }
+        },
+        "3h": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 1,
+                    "ost": 75,
+                    "rsi_period": 21,
+                    "fastk_period": 10,
+                    "slowk_period": 5,
+                    "slowk_matype": 3,
+                    "slowd_period": 3,
+                    "slowd_matype": 0,
+                    "ema_period": 40,
+                    "volume_sma_slow": 10,
+                    "volume_sma_fast": 9,
+                    "adx_p_period": 28,
+                    "adx_m_period": 29
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 12,
+                    "backcandles": 2,
+                    "pivot_window": 10
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 17,
+                    "stoch_k_len": 23,
+                    "stoch_k_smooth": 3,
+                    "cci_len": 30,
+                    "bbp_len": 28,
+                    "ma_len": 30,
+                    "st_len": 8,
+                    "st_mult": 2,
+                    "reg_len": 24,
+                    "ms_len": 4,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 6,
+                    "fore_len": 29,
+                    "lookback": 167,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 10,
+                    "min_len": 3,
+                    "max_len": 38,
+                    "v": 0.30099306904516393,
+                    "volat": 39,
+                    "persist": 5,
+                    "lag": 1
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 5,
+                    "sma_len": 12,
+                    "threshold": 0.05045393945696497,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 5,
+                    "atr_period": 25,
+                    "atr_mult": 0.3574749817621106,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 10,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 3,
+                    "bbl": 29,
+                    "mult": 1.1195444277902074
+            },
+            "triple_ma": {
+                    "s1": 3,
+                    "s2": 25,
+                    "s3": 25
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 8,
+                    "range_len": 9,
+                    "atr_len": 14,
+                    "atr_mult": 0.5049198666083532,
+                    "entry_buildup": 9
+            }
+        },
+        "4h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 1,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 81,
+                    "rsi_period": 12,
+                    "fastk_period": 25,
+                    "slowk_period": 9,
+                    "slowk_matype": 2,
+                    "slowd_period": 5,
+                    "slowd_matype": 2,
+                    "ema_period": 42,
+                    "volume_sma_slow": 15,
+                    "volume_sma_fast": 5,
+                    "adx_p_period": 12,
+                    "adx_m_period": 29
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 11,
+                    "backcandles": 3,
+                    "pivot_window": 13
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 14,
+                    "stoch_k_len": 15,
+                    "stoch_k_smooth": 5,
+                    "cci_len": 27,
+                    "bbp_len": 23,
+                    "ma_len": 28,
+                    "st_len": 14,
+                    "st_mult": 2,
+                    "reg_len": 14,
+                    "ms_len": 4,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 20,
+                    "fore_len": 20,
+                    "lookback": 88,
+                    "method": 2,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 10,
+                    "min_len": 4,
+                    "max_len": 41,
+                    "v": 0.7131236489729529,
+                    "volat": 58,
+                    "persist": 5,
+                    "lag": 1
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 7,
+                    "sma_len": 16,
+                    "threshold": 0.13633995473221422,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 8,
+                    "ma_period": 13,
+                    "atr_period": 11,
+                    "atr_mult": 0.4188734837105665,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 10,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 16,
+                    "bbl": 5,
+                    "mult": 1.0043309844011536
+            },
+            "triple_ma": {
+                    "s1": 3,
+                    "s2": 19,
+                    "s3": 27
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 10,
+                    "range_len": 6,
+                    "atr_len": 22,
+                    "atr_mult": 0.574026460887391,
+                    "entry_buildup": 10
+            }
+        },
+        "5h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 70,
+                    "rsi_period": 27,
+                    "fastk_period": 30,
+                    "slowk_period": 10,
+                    "slowk_matype": 1,
+                    "slowd_period": 6,
+                    "slowd_matype": 3,
+                    "ema_period": 36,
+                    "volume_sma_slow": 13,
+                    "volume_sma_fast": 4,
+                    "adx_p_period": 14,
+                    "adx_m_period": 24
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 11,
+                    "backcandles": 4,
+                    "pivot_window": 13
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 5,
+                    "stoch_k_len": 16,
+                    "stoch_k_smooth": 4,
+                    "cci_len": 30,
+                    "bbp_len": 16,
+                    "ma_len": 29,
+                    "st_len": 18,
+                    "st_mult": 1,
+                    "reg_len": 6,
+                    "ms_len": 8,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 6,
+                    "fore_len": 19,
+                    "lookback": 73,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 11,
+                    "min_len": 3,
+                    "max_len": 29,
+                    "v": 0.6948673635428357,
+                    "volat": 31,
+                    "persist": 5,
+                    "lag": 1
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 5,
+                    "sma_len": 29,
+                    "threshold": 0.303611412785387,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 8,
+                    "atr_period": 18,
+                    "atr_mult": 0.23035196831003002,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 18,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 18,
+                    "bbl": 19,
+                    "mult": 1.390512392334885
+            },
+            "triple_ma": {
+                    "s1": 3,
+                    "s2": 25,
+                    "s3": 23
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 34,
+                    "range_len": 8,
+                    "atr_len": 26,
+                    "atr_mult": 0.5008458498732786,
+                    "entry_buildup": 9
+            }
+        }
+    },
+    "xrp": {
+        "default": {
+            "close_to_close_volatility": {
+                "window": 5
+            },
+            "yang_zhang_volatility": {
+                "k": 0.34
+            },
+            "detect_head_shoulder": {
+                "shoulder_tolerance": 0.03,
+                "min_head_to_shoulder_diff": 0.01
+            },
+            "detect_multiple_tops_bottoms": {
+                "window": 5
+            },
+            "detect_triangle_pattern": {
+                "window": 7
+            },
+            "detect_wedge": {
+                "window": 7
+            },
+            "detect_channel": {
+                "window": 10,
+                "channel_range_threshold": 0.03
+            },
+            "detect_double_top_bottom": {
+                "min_peak_distance": 4,
+                "threshold": 0.02,
+                "min_valley_diff": 0.01,
+                "stamp": "confirmation"
+            },
+            "find_pivots": {
+                "window": 5
+            },
+            "power_law_corridor": {
+                "price_column": "Close",
+                "window": 10,
+                "sigma_multiplier": 1.0
+            },
+            "detect_liquidity_grabs": {
+                "lookback": 10,
+                "min_wick_ratio": 0.6,
+                "confirm_next_bar": false
+            },
+            "generate_ifvg_signals": {
+                "lookback_sweep": 20,
+                "require_sweep": false
+            },
+            "head_and_shoulders_top_signal": {
+                "bars_left": 3,
+                "tolerance": 0.02,
+                "warmup": 9
+            },
+            "detect_pennants": {
+                "bars_left": 3,
+                "slope_tol": 0.02,
+                "flat_tol": 0.02,
+                "warmup": 9
+            },
+            "mark_bwab_signals": {
+                "ma_len": 30,
+                "range_len": 10,
+                "atr_len": 18,
+                "atr_mult": 1.2,
+                "entry_buildup": 6
+            },
+            "triple_ma": {
+                "s1": 5,
+                "s2": 15,
+                "s3": 30
+            },
+            "generate_market_bottom_signals": {
+                "length": 2,
+                "bbl": 15,
+                "mult": 2
+            },
+            "williams_r_signals": {
+                "period": 14,
+                "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                "lookback": 30,
+                "ma_period": 20,
+                "atr_period": 14,
+                "atr_mult": 0.5
+            },
+            "compute_two_pole_oscillator": {
+                "filt_len": 20,
+                "sma_len": 25,
+                "threshold": 0.01
+            },
+            "adaptive_t3_signals": {
+                "rsi_len": 25,
+                "min_len": 5,
+                "max_len": 40,
+                "v": 0.5,
+                "volat": 40
+            },
+            "next_pivot_signals": {
+                "hist_len": 10,
+                "fore_len": 20,
+                "lookback": 30,
+                "method": 0
+            },
+            "market_sentiment_signals": {
+                "rsi_len": 14,
+                "stoch_k_len": 14,
+                "stoch_k_smooth": 3,
+                "cci_len": 20,
+                "bbp_len": 13,
+                "ma_len": 20,
+                "st_len": 10,
+                "st_mult": 3,
+                "reg_len": 25,
+                "ms_len": 5
+            },
+            "ema_pivot_signals": {
+                "ema_length": 45,
+                "backcandles": 15,
+                "pivot_window": 10
+            },
+            "harsi_strategy": {
+                "rsi_period": 14,
+                "fastk_period": 14,
+                "slowk_period": 3,
+                "slowk_matype": 0,
+                "slowd_period": 3,
+                "slowd_matype": 0,
+                "ema_period": 30,
+                "volume_sma_slow": 20,
+                "volume_sma_fast": 5,
+                "adx_p_period": 14,
+                "adx_m_period": 14
+            }
+        },
+        "30min": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 0,
+                    "use_adx": 1,
+                    "use_vortex": 1,
+                    "ost": 70,
+                    "rsi_period": 14,
+                    "fastk_period": 11,
+                    "slowk_period": 3,
+                    "slowk_matype": 3,
+                    "slowd_period": 8,
+                    "slowd_matype": 3,
+                    "ema_period": 11,
+                    "volume_sma_slow": 27,
+                    "volume_sma_fast": 4,
+                    "adx_p_period": 13,
+                    "adx_m_period": 13
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 17,
+                    "backcandles": 9,
+                    "pivot_window": 10
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 16,
+                    "stoch_k_len": 5,
+                    "stoch_k_smooth": 4,
+                    "cci_len": 13,
+                    "bbp_len": 20,
+                    "ma_len": 10,
+                    "st_len": 13,
+                    "st_mult": 1,
+                    "reg_len": 33,
+                    "ms_len": 10,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 20,
+                    "fore_len": 12,
+                    "lookback": 193,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 20,
+                    "min_len": 5,
+                    "max_len": 44,
+                    "v": 0.7092227246794987,
+                    "volat": 27,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 19,
+                    "sma_len": 24,
+                    "threshold": 0.1283539523332593,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 4,
+                    "ma_period": 25,
+                    "atr_period": 12,
+                    "atr_mult": 0.20015209118511226,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 10,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 3,
+                    "bbl": 23,
+                    "mult": 1.3091097155086497
+            },
+            "triple_ma": {
+                    "s1": 15,
+                    "s2": 27,
+                    "s3": 494
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 47,
+                    "range_len": 6,
+                    "atr_len": 27,
+                    "atr_mult": 0.512758047499977,
+                    "entry_buildup": 10
+            }
+        },
+        "1h": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 1,
+                    "use_adx": 1,
+                    "use_vortex": 1,
+                    "ost": 86,
+                    "rsi_period": 25,
+                    "fastk_period": 27,
+                    "slowk_period": 3,
+                    "slowk_matype": 2,
+                    "slowd_period": 3,
+                    "slowd_matype": 3,
+                    "ema_period": 38,
+                    "volume_sma_slow": 27,
+                    "volume_sma_fast": 7,
+                    "adx_p_period": 25,
+                    "adx_m_period": 28
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 24,
+                    "backcandles": 4,
+                    "pivot_window": 7
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 6,
+                    "stoch_k_len": 29,
+                    "stoch_k_smooth": 1,
+                    "cci_len": 13,
+                    "bbp_len": 13,
+                    "ma_len": 8,
+                    "st_len": 16,
+                    "st_mult": 3,
+                    "reg_len": 29,
+                    "ms_len": 7,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 20,
+                    "fore_len": 13,
+                    "lookback": 200,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 10,
+                    "min_len": 4,
+                    "max_len": 13,
+                    "v": 0.7721861139474844,
+                    "volat": 57,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 5,
+                    "sma_len": 47,
+                    "threshold": 0.05130605144283867,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 21,
+                    "ma_period": 4,
+                    "atr_period": 5,
+                    "atr_mult": 0.7453693949988612,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 30,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 26,
+                    "bbl": 18,
+                    "mult": 1.102074063708633
+            },
+            "triple_ma": {
+                    "s1": 15,
+                    "s2": 29,
+                    "s3": 29
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 28,
+                    "range_len": 20,
+                    "atr_len": 17,
+                    "atr_mult": 0.8652390209623012,
+                    "entry_buildup": 10
+            }
+        },
+        "2h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 70,
+                    "rsi_period": 10,
+                    "fastk_period": 19,
+                    "slowk_period": 9,
+                    "slowk_matype": 0,
+                    "slowd_period": 4,
+                    "slowd_matype": 2,
+                    "ema_period": 31,
+                    "volume_sma_slow": 30,
+                    "volume_sma_fast": 7,
+                    "adx_p_period": 25,
+                    "adx_m_period": 11
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 23,
+                    "backcandles": 12,
+                    "pivot_window": 4
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 29,
+                    "stoch_k_len": 6,
+                    "stoch_k_smooth": 2,
+                    "cci_len": 8,
+                    "bbp_len": 26,
+                    "ma_len": 28,
+                    "st_len": 7,
+                    "st_mult": 4,
+                    "reg_len": 11,
+                    "ms_len": 10,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 19,
+                    "fore_len": 29,
+                    "lookback": 195,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 23,
+                    "min_len": 10,
+                    "max_len": 49,
+                    "v": 0.30715483280888406,
+                    "volat": 52,
+                    "persist": 5,
+                    "lag": 4
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 25,
+                    "sma_len": 28,
+                    "threshold": 0.24875439022014562,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 3,
+                    "ma_period": 45,
+                    "atr_period": 9,
+                    "atr_mult": 0.652263421923479,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 24,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 10,
+                    "bbl": 14,
+                    "mult": 1.1709074377953945
+            },
+            "triple_ma": {
+                    "s1": 9,
+                    "s2": 24,
+                    "s3": 42
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 26,
+                    "range_len": 6,
+                    "atr_len": 9,
+                    "atr_mult": 0.5799160074295157,
+                    "entry_buildup": 8
+            }
+        },
+        "3h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 76,
+                    "rsi_period": 15,
+                    "fastk_period": 13,
+                    "slowk_period": 8,
+                    "slowk_matype": 0,
+                    "slowd_period": 5,
+                    "slowd_matype": 3,
+                    "ema_period": 46,
+                    "volume_sma_slow": 28,
+                    "volume_sma_fast": 8,
+                    "adx_p_period": 21,
+                    "adx_m_period": 12
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 15,
+                    "backcandles": 2,
+                    "pivot_window": 16
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 14,
+                    "stoch_k_len": 14,
+                    "stoch_k_smooth": 4,
+                    "cci_len": 8,
+                    "bbp_len": 23,
+                    "ma_len": 11,
+                    "st_len": 8,
+                    "st_mult": 4,
+                    "reg_len": 22,
+                    "ms_len": 5,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 19,
+                    "fore_len": 15,
+                    "lookback": 154,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 12,
+                    "min_len": 4,
+                    "max_len": 50,
+                    "v": 0.6268925151629844,
+                    "volat": 29,
+                    "persist": 5,
+                    "lag": 4
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 10,
+                    "sma_len": 15,
+                    "threshold": 0.05964572799806491,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 22,
+                    "atr_period": 7,
+                    "atr_mult": 0.3730064547365147,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 10,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 6,
+                    "bbl": 14,
+                    "mult": 1.295688625876603
+            },
+            "triple_ma": {
+                    "s1": 5,
+                    "s2": 18,
+                    "s3": 24
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 16,
+                    "range_len": 14,
+                    "atr_len": 5,
+                    "atr_mult": 0.6052774971110325,
+                    "entry_buildup": 7
+            }
+        },
+        "4h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 71,
+                    "rsi_period": 14,
+                    "fastk_period": 15,
+                    "slowk_period": 3,
+                    "slowk_matype": 2,
+                    "slowd_period": 5,
+                    "slowd_matype": 2,
+                    "ema_period": 16,
+                    "volume_sma_slow": 12,
+                    "volume_sma_fast": 7,
+                    "adx_p_period": 10,
+                    "adx_m_period": 16
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 12,
+                    "backcandles": 10,
+                    "pivot_window": 4
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 12,
+                    "stoch_k_len": 14,
+                    "stoch_k_smooth": 5,
+                    "cci_len": 30,
+                    "bbp_len": 5,
+                    "ma_len": 22,
+                    "st_len": 7,
+                    "st_mult": 5,
+                    "reg_len": 24,
+                    "ms_len": 3,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 17,
+                    "fore_len": 30,
+                    "lookback": 127,
+                    "method": 0,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 25,
+                    "min_len": 5,
+                    "max_len": 48,
+                    "v": 0.7106589703390109,
+                    "volat": 25,
+                    "persist": 5,
+                    "lag": 2
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 9,
+                    "sma_len": 13,
+                    "threshold": 0.08562810982772481,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 3,
+                    "ma_period": 12,
+                    "atr_period": 17,
+                    "atr_mult": 0.44989895744428715,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 25,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 3,
+                    "bbl": 26,
+                    "mult": 1.0721686852963694
+            },
+            "triple_ma": {
+                    "s1": 15,
+                    "s2": 26,
+                    "s3": 44
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 11,
+                    "range_len": 5,
+                    "atr_len": 6,
+                    "atr_mult": 0.5007731618316676,
+                    "entry_buildup": 3
+            }
+        },
+        "5h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 1,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 76,
+                    "rsi_period": 25,
+                    "fastk_period": 29,
+                    "slowk_period": 7,
+                    "slowk_matype": 3,
+                    "slowd_period": 9,
+                    "slowd_matype": 1,
+                    "ema_period": 37,
+                    "volume_sma_slow": 10,
+                    "volume_sma_fast": 4,
+                    "adx_p_period": 10,
+                    "adx_m_period": 18
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 17,
+                    "backcandles": 6,
+                    "pivot_window": 6
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 7,
+                    "stoch_k_len": 6,
+                    "stoch_k_smooth": 4,
+                    "cci_len": 10,
+                    "bbp_len": 27,
+                    "ma_len": 15,
+                    "st_len": 14,
+                    "st_mult": 2,
+                    "reg_len": 48,
+                    "ms_len": 8,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 8,
+                    "fore_len": 10,
+                    "lookback": 179,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 10,
+                    "min_len": 3,
+                    "max_len": 34,
+                    "v": 0.400764001959881,
+                    "volat": 48,
+                    "persist": 5,
+                    "lag": 2
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 6,
+                    "sma_len": 12,
+                    "threshold": 0.07060105309629658,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 34,
+                    "atr_period": 15,
+                    "atr_mult": 0.4110329360652277,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 30,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 11,
+                    "bbl": 14,
+                    "mult": 1.3001512972570024
+            },
+            "triple_ma": {
+                    "s1": 7,
+                    "s2": 29,
+                    "s3": 38
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 5,
+                    "range_len": 5,
+                    "atr_len": 11,
+                    "atr_mult": 0.5428869539612825,
+                    "entry_buildup": 8
+            }
+        }
+    },
+    "trx": {
+        "default": {
+            "close_to_close_volatility": {
+                "window": 5
+            },
+            "yang_zhang_volatility": {
+                "k": 0.34
+            },
+            "detect_head_shoulder": {
+                "shoulder_tolerance": 0.03,
+                "min_head_to_shoulder_diff": 0.01
+            },
+            "detect_multiple_tops_bottoms": {
+                "window": 5
+            },
+            "detect_triangle_pattern": {
+                "window": 7
+            },
+            "detect_wedge": {
+                "window": 7
+            },
+            "detect_channel": {
+                "window": 10,
+                "channel_range_threshold": 0.03
+            },
+            "detect_double_top_bottom": {
+                "min_peak_distance": 4,
+                "threshold": 0.02,
+                "min_valley_diff": 0.01,
+                "stamp": "confirmation"
+            },
+            "find_pivots": {
+                "window": 5
+            },
+            "power_law_corridor": {
+                "price_column": "Close",
+                "window": 10,
+                "sigma_multiplier": 1.0
+            },
+            "detect_liquidity_grabs": {
+                "lookback": 10,
+                "min_wick_ratio": 0.6,
+                "confirm_next_bar": false
+            },
+            "generate_ifvg_signals": {
+                "lookback_sweep": 20,
+                "require_sweep": false
+            },
+            "head_and_shoulders_top_signal": {
+                "bars_left": 3,
+                "tolerance": 0.02,
+                "warmup": 9
+            },
+            "detect_pennants": {
+                "bars_left": 3,
+                "slope_tol": 0.02,
+                "flat_tol": 0.02,
+                "warmup": 9
+            },
+            "mark_bwab_signals": {
+                "ma_len": 30,
+                "range_len": 10,
+                "atr_len": 18,
+                "atr_mult": 1.2,
+                "entry_buildup": 6
+            },
+            "triple_ma": {
+                "s1": 5,
+                "s2": 15,
+                "s3": 30
+            },
+            "generate_market_bottom_signals": {
+                "length": 2,
+                "bbl": 15,
+                "mult": 2
+            },
+            "williams_r_signals": {
+                "period": 14,
+                "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                "lookback": 30,
+                "ma_period": 20,
+                "atr_period": 14,
+                "atr_mult": 0.5
+            },
+            "compute_two_pole_oscillator": {
+                "filt_len": 20,
+                "sma_len": 25,
+                "threshold": 0.01
+            },
+            "adaptive_t3_signals": {
+                "rsi_len": 25,
+                "min_len": 5,
+                "max_len": 40,
+                "v": 0.5,
+                "volat": 40
+            },
+            "next_pivot_signals": {
+                "hist_len": 10,
+                "fore_len": 20,
+                "lookback": 30,
+                "method": 0
+            },
+            "market_sentiment_signals": {
+                "rsi_len": 14,
+                "stoch_k_len": 14,
+                "stoch_k_smooth": 3,
+                "cci_len": 20,
+                "bbp_len": 13,
+                "ma_len": 20,
+                "st_len": 10,
+                "st_mult": 3,
+                "reg_len": 25,
+                "ms_len": 5
+            },
+            "ema_pivot_signals": {
+                "ema_length": 45,
+                "backcandles": 15,
+                "pivot_window": 10
+            },
+            "harsi_strategy": {
+                "rsi_period": 14,
+                "fastk_period": 14,
+                "slowk_period": 3,
+                "slowk_matype": 0,
+                "slowd_period": 3,
+                "slowd_matype": 0,
+                "ema_period": 30,
+                "volume_sma_slow": 20,
+                "volume_sma_fast": 5,
+                "adx_p_period": 14,
+                "adx_m_period": 14
+            }
+        },
+        "30min": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 1,
+                    "use_adx": 1,
+                    "use_vortex": 1,
+                    "ost": 88,
+                    "rsi_period": 20,
+                    "fastk_period": 23,
+                    "slowk_period": 3,
+                    "slowk_matype": 2,
+                    "slowd_period": 10,
+                    "slowd_matype": 3,
+                    "ema_period": 13,
+                    "volume_sma_slow": 26,
+                    "volume_sma_fast": 8,
+                    "adx_p_period": 30,
+                    "adx_m_period": 20
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 10,
+                    "backcandles": 20,
+                    "pivot_window": 74419824380165296
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 5,
+                    "stoch_k_len": 20,
+                    "stoch_k_smooth": 2,
+                    "cci_len": 6,
+                    "bbp_len": 13,
+                    "ma_len": 26,
+                    "st_len": 19,
+                    "st_mult": 3,
+                    "reg_len": 19,
+                    "ms_len": 6,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 20,
+                    "fore_len": 14,
+                    "lookback": 189,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 29,
+                    "min_len": 4,
+                    "max_len": 35,
+                    "v": 0.546732448066943,
+                    "volat": 39,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 23,
+                    "sma_len": 16,
+                    "threshold": 0.4365939711551082,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 33,
+                    "ma_period": 50,
+                    "atr_period": 13,
+                    "atr_mult": 0.6628175479981805,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 30,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 15,
+                    "bbl": 21,
+                    "mult": 2.712528312721978
+            },
+            "triple_ma": {
+                    "s1": 7,
+                    "s2": 25,
+                    "s3": 4481710561676973
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 7,
+                    "range_len": 19,
+                    "atr_len": 5,
+                    "atr_mult": 1.1616844697570163,
+                    "entry_buildup": 10
+            }
+        },
+        "1h": {
+            "harsi_strategy": {
+                    "use_ema": 1,
+                    "use_vol": 1,
+                    "use_adx": 1,
+                    "use_vortex": 1,
+                    "ost": 74,
+                    "rsi_period": 25,
+                    "fastk_period": 17,
+                    "slowk_period": 7,
+                    "slowk_matype": 1,
+                    "slowd_period": 3,
+                    "slowd_matype": 2,
+                    "ema_period": 23,
+                    "volume_sma_slow": 22,
+                    "volume_sma_fast": 5,
+                    "adx_p_period": 15,
+                    "adx_m_period": 28
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 55,
+                    "backcandles": 16,
+                    "pivot_window": 4
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 17,
+                    "stoch_k_len": 12,
+                    "stoch_k_smooth": 4,
+                    "cci_len": 17,
+                    "bbp_len": 24,
+                    "ma_len": 7,
+                    "st_len": 14,
+                    "st_mult": 5,
+                    "reg_len": 27,
+                    "ms_len": 6,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 20,
+                    "fore_len": 12,
+                    "lookback": 200,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 40,
+                    "min_len": 10,
+                    "max_len": 54,
+                    "v": 0.3570235881247103,
+                    "volat": 39,
+                    "persist": 5,
+                    "lag": 4
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 30,
+                    "sma_len": 39,
+                    "threshold": 0.16647296293128774,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 2,
+                    "ma_period": 7,
+                    "atr_period": 21,
+                    "atr_mult": 0.6082610109703848,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 23,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 5,
+                    "bbl": 24,
+                    "mult": 2.449397548336346
+            },
+            "triple_ma": {
+                    "s1": 15,
+                    "s2": 25,
+                    "s3": 50204948870092153
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 38,
+                    "range_len": 9,
+                    "atr_len": 15,
+                    "atr_mult": 0.5003228065789668,
+                    "entry_buildup": 6
+            }
+        },
+        "2h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 1,
+                    "ost": 82,
+                    "rsi_period": 16,
+                    "fastk_period": 18,
+                    "slowk_period": 10,
+                    "slowk_matype": 1,
+                    "slowd_period": 10,
+                    "slowd_matype": 0,
+                    "ema_period": 29,
+                    "volume_sma_slow": 27,
+                    "volume_sma_fast": 3,
+                    "adx_p_period": 11,
+                    "adx_m_period": 28
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 19,
+                    "backcandles": 6,
+                    "pivot_window": 16
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 25,
+                    "stoch_k_len": 14,
+                    "stoch_k_smooth": 3,
+                    "cci_len": 10,
+                    "bbp_len": 17,
+                    "ma_len": 12,
+                    "st_len": 15,
+                    "st_mult": 4,
+                    "reg_len": 14,
+                    "ms_len": 6,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 13,
+                    "fore_len": 23,
+                    "lookback": 149,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 22,
+                    "min_len": 6,
+                    "max_len": 25,
+                    "v": 0.7713288277700009,
+                    "volat": 42,
+                    "persist": 5,
+                    "lag": 4
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 10,
+                    "sma_len": 36,
+                    "threshold": 0.3736261028746015,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 9,
+                    "ma_period": 38,
+                    "atr_period": 30,
+                    "atr_mult": 0.20011795620104247,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 12,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 16,
+                    "bbl": 17,
+                    "mult": 1.7815611397121822
+            },
+            "triple_ma": {
+                    "s1": 10,
+                    "s2": 27,
+                    "s3": 28
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 43,
+                    "range_len": 16,
+                    "atr_len": 11,
+                    "atr_mult": 0.5001754862398565,
+                    "entry_buildup": 8
+            }
+        },
+        "3h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 80,
+                    "rsi_period": 13,
+                    "fastk_period": 22,
+                    "slowk_period": 4,
+                    "slowk_matype": 2,
+                    "slowd_period": 7,
+                    "slowd_matype": 2,
+                    "ema_period": 47,
+                    "volume_sma_slow": 18,
+                    "volume_sma_fast": 3,
+                    "adx_p_period": 26,
+                    "adx_m_period": 29
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 35,
+                    "backcandles": 9,
+                    "pivot_window": 9
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 23,
+                    "stoch_k_len": 11,
+                    "stoch_k_smooth": 1,
+                    "cci_len": 10,
+                    "bbp_len": 23,
+                    "ma_len": 22,
+                    "st_len": 10,
+                    "st_mult": 2,
+                    "reg_len": 24,
+                    "ms_len": 6,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 17,
+                    "fore_len": 22,
+                    "lookback": 79,
+                    "method": 0,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 23,
+                    "min_len": 4,
+                    "max_len": 31,
+                    "v": 0.31949453070159217,
+                    "volat": 52,
+                    "persist": 5,
+                    "lag": 2
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 6,
+                    "sma_len": 39,
+                    "threshold": 0.23889469637314603,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 5,
+                    "ma_period": 30,
+                    "atr_period": 17,
+                    "atr_mult": 0.23555405699027546,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 11,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 6,
+                    "bbl": 5,
+                    "mult": 1.2686788498146098
+            },
+            "triple_ma": {
+                    "s1": 8,
+                    "s2": 19,
+                    "s3": 48
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 26,
+                    "range_len": 5,
+                    "atr_len": 8,
+                    "atr_mult": 0.56522109194882,
+                    "entry_buildup": 5
+            }
+        },
+        "4h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 83,
+                    "rsi_period": 26,
+                    "fastk_period": 23,
+                    "slowk_period": 3,
+                    "slowk_matype": 0,
+                    "slowd_period": 6,
+                    "slowd_matype": 3,
+                    "ema_period": 26,
+                    "volume_sma_slow": 11,
+                    "volume_sma_fast": 3,
+                    "adx_p_period": 28,
+                    "adx_m_period": 12
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 20,
+                    "backcandles": 5,
+                    "pivot_window": 16
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 15,
+                    "stoch_k_len": 9,
+                    "stoch_k_smooth": 3,
+                    "cci_len": 12,
+                    "bbp_len": 5,
+                    "ma_len": 21,
+                    "st_len": 19,
+                    "st_mult": 3,
+                    "reg_len": 28,
+                    "ms_len": 6,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 19,
+                    "fore_len": 29,
+                    "lookback": 169,
+                    "method": 1,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 17,
+                    "min_len": 3,
+                    "max_len": 57,
+                    "v": 0.37318366295811445,
+                    "volat": 32,
+                    "persist": 5,
+                    "lag": 5
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 14,
+                    "sma_len": 45,
+                    "threshold": 0.2010472708818835,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 5,
+                    "ma_period": 49,
+                    "atr_period": 15,
+                    "atr_mult": 0.2749997626512981,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 20,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 5,
+                    "bbl": 4,
+                    "mult": 1.1206145618906156
+            },
+            "triple_ma": {
+                    "s1": 15,
+                    "s2": 25,
+                    "s3": 42
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 21,
+                    "range_len": 14,
+                    "atr_len": 5,
+                    "atr_mult": 0.5845823519956714,
+                    "entry_buildup": 10
+            }
+        },
+        "5h": {
+            "harsi_strategy": {
+                    "use_ema": 0,
+                    "use_vol": 0,
+                    "use_adx": 0,
+                    "use_vortex": 0,
+                    "ost": 74,
+                    "rsi_period": 26,
+                    "fastk_period": 29,
+                    "slowk_period": 3,
+                    "slowk_matype": 3,
+                    "slowd_period": 4,
+                    "slowd_matype": 3,
+                    "ema_period": 33,
+                    "volume_sma_slow": 10,
+                    "volume_sma_fast": 10,
+                    "adx_p_period": 21,
+                    "adx_m_period": 10
+            },
+            "ema_pivot_signals": {
+                    "ema_length": 10,
+                    "backcandles": 2,
+                    "pivot_window": 13
+            },
+            "market_sentiment_signals": {
+                    "rsi_len": 20,
+                    "stoch_k_len": 16,
+                    "stoch_k_smooth": 5,
+                    "cci_len": 12,
+                    "bbp_len": 19,
+                    "ma_len": 9,
+                    "st_len": 8,
+                    "st_mult": 5,
+                    "reg_len": 7,
+                    "ms_len": 5,
+                    "persist": 5
+            },
+            "next_pivot_signals": {
+                    "hist_len": 14,
+                    "fore_len": 25,
+                    "lookback": 52,
+                    "method": 0,
+                    "persist": 5
+            },
+            "adaptive_t3_signals": {
+                    "rsi_len": 19,
+                    "min_len": 4,
+                    "max_len": 48,
+                    "v": 0.5382773813125399,
+                    "volat": 28,
+                    "persist": 5,
+                    "lag": 2
+            },
+            "compute_two_pole_oscillator": {
+                    "filt_len": 13,
+                    "sma_len": 12,
+                    "threshold": 0.2639195629523432,
+                    "persist": 5
+            },
+            "lowest_highest_tick_strategy": {
+                    "lookback": 4,
+                    "ma_period": 50,
+                    "atr_period": 15,
+                    "atr_mult": 0.247914722558586,
+                    "persist": 5
+            },
+            "williams_r_signals": {
+                    "period": 25,
+                    "persist": 5
+            },
+            "generate_market_bottom_signals": {
+                    "length": 3,
+                    "bbl": 8,
+                    "mult": 1.4501070840503762
+            },
+            "triple_ma": {
+                    "s1": 9,
+                    "s2": 13,
+                    "s3": 28
+            },
+            "mark_bwab_signals": {
+                    "ma_len": 14,
+                    "range_len": 25,
+                    "atr_len": 5,
+                    "atr_mult": 0.5563823261013852,
+                    "entry_buildup": 10
+            }
+        }
+    }
+}
