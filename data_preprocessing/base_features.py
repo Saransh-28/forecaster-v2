@@ -1,26 +1,10 @@
 from datetime import timedelta
-from multiprocessing import Pool, cpu_count
-from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
-import time
-import math, numpy as np, pandas as pd
-from numba import njit, prange
 import pandas as pd
-import numpy as np, pandas as pd
-from numba import njit, prange
-
 import numpy as np
-import numpy as np
-from numpy.linalg import inv
 import requests
-from sklearn.neighbors import KernelDensity
-from scipy.spatial.distance import mahalanobis
-
 import math
-import numpy as np
-import pandas as pd
-from numba import njit, prange
-
-from technical_features import get_technical_indicator_features
+from numba import njit
+from data_preprocessing.technical_features import get_technical_indicator_features
 from tenacity import retry
 
 
@@ -89,7 +73,7 @@ def get_fear_greed_index():
     return df_fng
 
 
-@njit(fastmath=True, parallel=True, inline="always")
+@njit(cache=True, fastmath=True, parallel=True, inline="always")
 def _std_sample(x):
     n = x.size
     if n <= 1:
@@ -97,7 +81,7 @@ def _std_sample(x):
     mu = x.sum() / n
     return math.sqrt(((x - mu) ** 2).sum() / (n - 1))
 
-@njit(inline="always")
+@njit(cache=True, inline="always")
 def _rs_full(buf, kind_id):
     if kind_id == 0:
         incs = buf[1:] - buf[:-1]
@@ -120,7 +104,7 @@ def _rs_full(buf, kind_id):
     return R / S
 
 
-@njit
+@njit(cache=True)
 def _hurst_core(series, kind_id, windows):
     RS = np.empty(windows.size, np.float64)
 
@@ -292,7 +276,7 @@ def candle_features(df):
     return df
 
 
-@njit
+@njit(cache=True)
 def _vwap_numba(high, low, close, volume):
     cum_pv = 0.0
     cum_vol = 0.0
@@ -310,7 +294,7 @@ def vwap_group(grp: pd.DataFrame) -> float:
     v = grp['Volume'].values
     return _vwap_numba(h, l, c, v)
 
-@njit
+@njit(cache=True)
 def kurtosis_numba(x: np.ndarray) -> float:
     n = x.shape[0]
     if n < 4:

@@ -333,7 +333,7 @@ def find_pivots(df: pd.DataFrame, window: int = 5) -> pd.DataFrame:
     return out
 
 
-@njit
+@njit(cache=True)
 def compute_corridor_values(t, prices, window, sigma_multiplier):
     n = t.shape[0]
     baseline = np.empty(n)
@@ -607,7 +607,7 @@ def get_pattern_recognition_features(df, context):
 
 
 
-@njit
+@njit(cache=True)
 def _hns_top_jit(high: np.ndarray,
                  low: np.ndarray,
                  bars_left: int,
@@ -684,7 +684,7 @@ def head_and_shoulders_top_signal(df: pd.DataFrame,
 
 
 
-@njit
+@njit(cache=True)
 def _pennant_jit(high: np.ndarray,
                  low: np.ndarray,
                  bars_left: int,

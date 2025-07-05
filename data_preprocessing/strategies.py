@@ -4,7 +4,7 @@ import pandas as pd
 import talib
 
 
-@njit
+@njit(cache=True)
 def compute_atr_numba(high, low, close, length):
     n = len(close)
     atr = np.full(n, np.nan)
@@ -25,19 +25,24 @@ def compute_atr_numba(high, low, close, length):
     return atr
 
 
-@njit
-def bwab_signals(
-    high, low, close, ma_len=39, range_len=10, atr_len=18, atr_mult=1.2, entry_buildup=6
-):
+@njit(cache=True)
+def rolling_ma(close, ma_len):
     n = len(close)
-    long_sig = np.zeros(n, np.bool_)
-    short_sig = np.zeros(n, np.bool_)
     ma = np.full(n, np.nan)
-    for i in range(ma_len - 1, n):
-        s = 0.0
-        for j in range(i - ma_len + 1, i + 1):
-            s += close[j]
+    if n < ma_len:
+        return ma
+    s = 0.0
+    for i in range(ma_len):
+        s += close[i]
+    ma[ma_len - 1] = s / ma_len
+    for i in range(ma_len, n):
+        s += close[i] - close[i - ma_len]
         ma[i] = s / ma_len
+    return ma
+
+@njit(cache=True)
+def rolling_range_high(low, high, range_len):
+    n = len(high)
     range_high = np.full(n, np.nan)
     range_low = np.full(n, np.nan)
     for i in range(range_len, n):
@@ -50,6 +55,17 @@ def bwab_signals(
                 lmin = low[j]
         range_high[i] = hmax
         range_low[i] = lmin
+    return range_high, range_low
+
+@njit(cache=True)
+def bwab_signals(
+    high, low, close, ma_len=39, range_len=10, atr_len=18, atr_mult=1.2, entry_buildup=6
+):
+    n = len(close)
+    long_sig = np.zeros(n, np.bool_)
+    short_sig = np.zeros(n, np.bool_)
+    ma = rolling_ma(close, ma_len)
+    range_high, range_low = rolling_range_high(low, high, range_len)
     atr = compute_atr_numba(high, low, close, atr_len)
     for i in range(range_len, n):
         if np.isnan(ma[i]) or np.isnan(atr[i]):
@@ -97,15 +113,15 @@ def mark_bwab_signals(
     df_result = df.copy()
     long = long_sig.astype(int)
     short = short_sig.astype(int)
-    df_result["bwab_signal"] = long - short
-    df_result["bwab_signal"] = df_result["bwab_signal"].replace(0, np.nan)
-    df_result["bwab_signal"] = (
-        df_result["bwab_signal"].ffill(limit=5).fillna(0).astype(int)
+    df_result["strategy_bwab"] = long - short
+    df_result["strategy_bwab"] = df_result["strategy_bwab"].replace(0, np.nan)
+    df_result["strategy_bwab"] = (
+        df_result["strategy_bwab"].ffill(limit=5).fillna(0).astype(int)
     )
     return df_result
 
 
-@njit
+@njit(cache=True)
 def triple_ma_signals(close, s1=5, s2=15, s3=30):
     n = len(close)
     ma1 = np.full(n, np.nan)
@@ -174,17 +190,16 @@ def triple_ma_signals(close, s1=5, s2=15, s3=30):
                 continue
     return short_sig, long_sig
 
-
-def apply_triple_ma(df, s1=5, s2=15, s3=30):
+def triple_ma(df, s1=5, s2=15, s3=30):
     cl = df["Close"].values
-    longs, shorts = triple_ma_signals(cl, s1=s1, s2=s2, s3=s3)
+    shorts, longs = triple_ma_signals(cl, s1=s1, s2=s2, s3=s3)
     out = df.copy()
     long = longs.astype(int)
     short = shorts.astype(int)
-    out["triple_ma_signal"] = long - short
-    out["triple_ma_signal"] = out["triple_ma_signal"].replace(0, np.nan)
-    out["triple_ma_signal"] = (
-        out["triple_ma_signal"].ffill(limit=5).fillna(0).astype(int)
+    out["strategy_triple_ma"] = long - short
+    out["strategy_triple_ma"] = out["strategy_triple_ma"].replace(0, np.nan)
+    out["strategy_triple_ma"] = (
+        out["strategy_triple_ma"].ffill(limit=5).fillna(0).astype(int)
     )
     return out
 
@@ -197,16 +212,14 @@ def williams_vix_fix(df: pd.DataFrame, length: int = 22) -> pd.Series:
     wvf = 100 * (highest_high - df["Close"]) / denom
     return wvf
 
-
 def compute_wvf_bands(wvf: pd.Series, bbl: int = 20, mult: float = 2.0):
     wvf_ma = wvf.rolling(window=bbl, min_periods=1).mean()
     wvf_std = wvf.rolling(window=bbl, min_periods=1).std()
     wvf_upper = wvf_ma + mult * wvf_std
     return wvf_ma, wvf_std, wvf_upper
 
-
 def generate_market_bottom_signals(
-    original_df: pd.DataFrame, length: int = 2, bbl: int = 15, mult: float = 2.0
+    original_df: pd.DataFrame, length: int = 22, bbl: int = 20, mult: float = 2.0
 ) -> pd.DataFrame:
     df = original_df.copy()
     wvf = williams_vix_fix(df, length)
@@ -214,15 +227,16 @@ def generate_market_bottom_signals(
     cross_signal = (wvf.shift(1) > upper.shift(1)) & (wvf <= upper)
     rolling_low = df["Low"].rolling(window=length, min_periods=1).min()
     bottom_condition = df["Low"] == rolling_low
-    original_df["bottom_signal"] = (cross_signal & bottom_condition).astype(int)
-    original_df["bottom_signal"] = original_df["bottom_signal"].replace(0, np.nan)
-    original_df["bottom_signal"] = (
-        original_df["bottom_signal"].ffill(limit=5).fillna(0).astype(int)
-    )
-    return original_df
+    signal = (cross_signal & bottom_condition).astype(int)
+    signal = signal.replace(0, np.nan)
+    signal = signal.ffill(limit=5).fillna(0).astype(int)
+    out = original_df.copy()
+    out["strategy_bottom"] = signal
+    return out
 
 
-@njit
+
+@njit(cache=True)
 def _compute_williams_r_signals(high, low, close, period):
     n = high.shape[0]
     sig = np.zeros(n, dtype=np.int8)
@@ -236,7 +250,6 @@ def _compute_williams_r_signals(high, low, close, period):
                 hh = high[j]
             if low[j] < ll:
                 ll = low[j]
-
         rng = hh - ll
         if rng == 0.0:
             wr[i] = 0.0
@@ -255,25 +268,23 @@ def _compute_williams_r_signals(high, low, close, period):
 
     return sig, wr
 
-
-def williams_r_signals(df: pd.DataFrame, period: int = 14) -> pd.DataFrame:
+def williams_r_signals(df: pd.DataFrame, period: int = 14, persist: int = 5) -> pd.DataFrame:
     data = df.copy()
     data.sort_index(inplace=True)
     high = data["High"].to_numpy(dtype=np.float64)
     low = data["Low"].to_numpy(dtype=np.float64)
     close = data["Close"].to_numpy(dtype=np.float64)
     sig, val = _compute_williams_r_signals(high, low, close, period)
-    data["williams_r_signal"] = sig
     data["williams_r"] = val
-    data["williams_r_signal"] = data["williams_r_signal"].replace(0, np.nan)
-    data["williams_r_signal"] = (
-        data["williams_r_signal"].ffill(limit=5).fillna(0).astype(int)
+    data["strategy_williams_r"] = sig
+    data["strategy_williams_r"] = data["strategy_williams_r"].replace(0, np.nan)
+    data["strategy_williams_r"] = (
+        data["strategy_williams_r"].ffill(limit=persist).fillna(0).astype(int)
     )
-
     return data
 
 
-@njit
+@njit(cache=True)
 def rolling_max_index(arr, window):
     n = len(arr)
     out = np.full(n, -1, dtype=np.int32)
@@ -291,8 +302,7 @@ def rolling_max_index(arr, window):
             out[i] = dq[head]
     return out
 
-
-@njit
+@njit(cache=True)
 def rolling_min_index(arr, window):
     n = len(arr)
     out = np.full(n, -1, dtype=np.int32)
@@ -311,7 +321,7 @@ def rolling_min_index(arr, window):
     return out
 
 
-@njit
+@njit(cache=True)
 def rolling_sum(arr, window):
     n = len(arr)
     out = np.full(n, np.nan)
@@ -324,17 +334,10 @@ def rolling_sum(arr, window):
             out[i] = s
     return out
 
-
-@njit
+@njit(cache=True)
 def _enhanced_lh_tick_jit(
-    highs: np.ndarray,
-    lows: np.ndarray,
-    closes: np.ndarray,
-    volumes: np.ndarray,
-    lookback: int,
-    ma_period: int,
-    atr_period: int,
-    atr_mult: float,
+    highs, lows, closes, volumes,
+    lookback, ma_period, atr_period, atr_mult
 ):
     n = len(closes)
     tr = np.empty(n)
@@ -400,13 +403,13 @@ def _enhanced_lh_tick_jit(
             short_sig[i] = 1
     return long_sig, short_sig, support, resistance, sma, atr
 
-
 def lowest_highest_tick_strategy(
     df: pd.DataFrame,
     lookback: int = 30,
     ma_period: int = 20,
     atr_period: int = 14,
     atr_mult: float = 0.5,
+    persist: int = 5
 ) -> pd.DataFrame:
     req = {"High", "Low", "Close"}
     if not req.issubset(df.columns):
@@ -416,19 +419,17 @@ def lowest_highest_tick_strategy(
     closes = df["Close"].to_numpy()
     vols = df["Volume"].to_numpy() if "Volume" in df.columns else np.empty(0)
     out = df.copy()
-    ls, ss, sup, res, sma, atr = _enhanced_lh_tick_jit(
+    long_sig, short_sig, sup, res, sma, atr = _enhanced_lh_tick_jit(
         highs, lows, closes, vols, lookback, ma_period, atr_period, atr_mult
     )
-    long = ss
-    short = ls
-    out["lht_signal"] = long - short
-    out["lht_signal"] = out["lht_signal"].replace(0, np.nan)
-    out["lht_signal"] = out["lht_signal"].ffill(limit=5).fillna(0).astype(int)
-
+    out["strategy_lht"] = long_sig - short_sig
+    out["strategy_lht"] = out["strategy_lht"].replace(0, np.nan)
+    out["strategy_lht"] = out["strategy_lht"].ffill(limit=persist).fillna(0).astype(int)
     return out
 
 
-@njit
+
+@njit(cache=True)
 def two_pole_filter_numba(src, length):
     alpha = 2.0 / (length + 1)
     n = len(src)
@@ -448,8 +449,7 @@ def two_pole_filter_numba(src, length):
         out[i] = s2
     return out
 
-
-@njit
+@njit(cache=True)
 def compute_sma_n1_numba(close, sma_len):
     n = len(close)
     sma_n1 = np.full(n, np.nan)
@@ -473,8 +473,7 @@ def compute_sma_n1_numba(close, sma_len):
             sma_n1[i] = 0.0
     return sma_n1
 
-
-def compute_two_pole_oscillator(df, filt_len=20, sma_len=25, threshold=0.1):
+def compute_two_pole_oscillator(df, filt_len=20, sma_len=25, threshold=0.1, persist=5):
     close = df["Close"].values
     sma_n1 = compute_sma_n1_numba(close, sma_len)
     sma_n1 = np.clip(sma_n1, -3, 3)
@@ -492,21 +491,21 @@ def compute_two_pole_oscillator(df, filt_len=20, sma_len=25, threshold=0.1):
     sell = (
         (two_p_lag1 < two_pp_lag1) & (two_p > two_pp) & (two_p < -threshold)
     ).astype(int)
-    buy = ((two_p_lag1 > two_pp_lag1) & (two_p < two_pp) & (two_p > threshold)).astype(
-        int
-    )
+    buy = (
+        (two_p_lag1 > two_pp_lag1) & (two_p < two_pp) & (two_p > threshold)
+    ).astype(int)
     result = df.copy()
     delta = np.append([np.nan], np.diff(two_p))
     result["two_pole_momentum"] = delta
-    result["two_pole_signal"] = buy - sell
-    result["two_pole_signal"] = result["two_pole_signal"].replace(0, np.nan)
-    result["two_pole_signal"] = (
-        result["two_pole_signal"].ffill(limit=5).fillna(0).astype(int)
+    result["strategy_two_pole"] = buy - sell
+    result["strategy_two_pole"] = result["strategy_two_pole"].replace(0, np.nan)
+    result["strategy_two_pole"] = (
+        result["strategy_two_pole"].ffill(limit=persist).fillna(0).astype(int)
     )
     return result
 
 
-@njit
+@njit(cache=True)
 def ema_numba(src, length):
     alpha = 2 / (length + 1)
     n = len(src)
@@ -516,8 +515,7 @@ def ema_numba(src, length):
         out[i] = alpha * src[i] + (1 - alpha) * out[i - 1]
     return out
 
-
-@njit
+@njit(cache=True)
 def adaptive_t3(src, rsi_len=14, min_len=5, max_len=50, v=0.7, volat=40):
     n = len(src)
     rsi = np.empty(n)
@@ -563,24 +561,22 @@ def adaptive_t3(src, rsi_len=14, min_len=5, max_len=50, v=0.7, volat=40):
 
     return t3
 
-
-def apply_adaptive_t3_signals(df, rsi_len=25, min_len=5, max_len=40, v=0.5, volat=40):
+def adaptive_t3_signals(df, rsi_len=25, min_len=5, max_len=40, v=0.5, volat=40, persist=5, lag=2):
     src = df["Close"].values
     t3_vals = adaptive_t3(
         src, rsi_len=rsi_len, min_len=min_len, max_len=max_len, v=v, volat=volat
     )
-
-    result = df.copy()
     t3 = pd.Series(t3_vals)
-    result["t3_signal"] = np.where(
-        t3 > t3.shift(2), 1, np.where(t3 < t3.shift(2), -1, 0)
+    result = df.copy()
+    result["strategy_t3"] = np.where(
+        t3 > t3.shift(lag), 1, np.where(t3 < t3.shift(lag), -1, 0)
     )
-    result["t3_signal"] = result["t3_signal"].replace(0, np.nan)
-    result["t3_signal"] = result["t3_signal"].ffill(limit=5).fillna(0).astype(int)
+    result["strategy_t3"] = result["strategy_t3"].replace(0, np.nan)
+    result["strategy_t3"] = result["strategy_t3"].ffill(limit=persist).fillna(0).astype(int)
     return result
 
 
-@njit
+@njit(cache=True)
 def next_pivot_signal_inner(close, hist_len=10, fore_len=20, lookback=100, method=0):
     n = len(close)
     long_sig = np.zeros(n, np.bool_)
@@ -613,8 +609,7 @@ def next_pivot_signal_inner(close, hist_len=10, fore_len=20, lookback=100, metho
         short_sig[i] = pivot < curr
     return long_sig, short_sig
 
-
-def next_pivot_signals(df, hist_len=10, fore_len=20, lookback=100, method=0):
+def next_pivot_signals(df, hist_len=10, fore_len=20, lookback=100, method=0, persist=5):
     close = df["Close"].values
     long_sig, short_sig = next_pivot_signal_inner(
         close, hist_len=hist_len, fore_len=fore_len, lookback=lookback, method=method
@@ -622,34 +617,25 @@ def next_pivot_signals(df, hist_len=10, fore_len=20, lookback=100, method=0):
     df_result = df.copy()
     long = long_sig.astype(int)
     short = short_sig.astype(int)
-    df_result["next_pivot_signal"] = long - short
-    df_result["next_pivot_signal"] = df_result["next_pivot_signal"].replace(0, np.nan)
-    df_result["next_pivot_signal"] = (
-        df_result["next_pivot_signal"].ffill(limit=5).fillna(0).astype(int)
+    df_result["strategy_next_pivot"] = long - short
+    df_result["strategy_next_pivot"] = df_result["strategy_next_pivot"].replace(0, np.nan)
+    df_result["strategy_next_pivot"] = (
+        df_result["strategy_next_pivot"].ffill(limit=persist).fillna(0).astype(int)
     )
     return df_result
 
 
-@njit
+@njit(cache=True)
 def _compute_market_sentiment_signals(
-    close,
-    high,
-    low,
-    rsi_len=14,
-    stoch_k_len=14,
-    stoch_k_smooth=3,
-    cci_len=20,
-    bbp_len=13,
-    ma_len=20,
-    st_len=10,
-    st_mult=3,
-    reg_len=25,
-    ms_len=5,
+    close, high, low,
+    rsi_len=14, stoch_k_len=14, stoch_k_smooth=3, cci_len=20,
+    bbp_len=13, ma_len=20, st_len=10, st_mult=3, reg_len=25, ms_len=5,
 ):
     n = len(close)
     long_sig = np.zeros(n, dtype=np.bool_)
     short_sig = np.zeros(n, dtype=np.bool_)
 
+    # -- RSI calculation --
     def calc_rsi(prices, length):
         rsis = np.full(prices.shape, np.nan)
         for i in range(length, len(prices)):
@@ -677,6 +663,7 @@ def _compute_market_sentiment_signals(
 
     rsi_val = normalize_series(calc_rsi(close, rsi_len))
 
+    # -- Stochastic K calculation --
     stoch_val = np.zeros(n)
     for i in range(stoch_k_len + stoch_k_smooth - 1, n):
         ll = np.min(low[i - stoch_k_len + 1 : i + 1])
@@ -690,6 +677,7 @@ def _compute_market_sentiment_signals(
             smoothed_k += raw_k
         stoch_val[i] = smoothed_k / stoch_k_smooth
 
+    # -- CCI calculation --
     cci_val = np.zeros(n)
     for i in range(cci_len, n):
         tp = (high[i] + low[i] + close[i]) / 3
@@ -703,6 +691,7 @@ def _compute_market_sentiment_signals(
         md = sum_dev / cci_len
         cci_val[i] = (tp - ma) / (0.015 * md) if md != 0 else 0
 
+    # -- BBP calculation (simplified) --
     bbp_val = np.zeros(n)
     for i in range(bbp_len, n):
         ema = 0.0
@@ -711,6 +700,7 @@ def _compute_market_sentiment_signals(
         ema /= bbp_len
         bbp_val[i] = (high[i] + low[i]) - 2 * ema
 
+    # -- MA deviation --
     ma_val = np.zeros(n)
     for i in range(ma_len, n):
         ma_sum = 0.0
@@ -718,6 +708,7 @@ def _compute_market_sentiment_signals(
             ma_sum += close[j]
         ma_val[i] = close[i] - (ma_sum / ma_len)
 
+    # -- SuperTrend-like value --
     st_val = np.zeros(n)
     for i in range(st_len, n):
         atr = 0.0
@@ -728,6 +719,7 @@ def _compute_market_sentiment_signals(
         down = (high[i] + low[i]) / 2 - st_mult * atr
         st_val[i] = 1 if close[i] > up else -1 if close[i] < down else 0
 
+    # -- Linear Regression Slope --
     reg_val = np.zeros(n)
     for i in range(reg_len, n):
         x = np.arange(reg_len)
@@ -743,24 +735,19 @@ def _compute_market_sentiment_signals(
         else:
             reg_val[i] = 0
 
+    # -- Momentum Swing --
     ms_val = np.zeros(n)
     for i in range(ms_len, n):
         ph = np.max(high[i - ms_len + 1 : i + 1])
         pl = np.min(low[i - ms_len + 1 : i + 1])
         ms_val[i] = 1 if close[i] > ph else -1 if close[i] < pl else 0
 
+    # -- Aggregate market sentiment --
     for i in range(n):
         count = 0
         summation = 0.0
         for val in [
-            rsi_val[i],
-            stoch_val[i],
-            cci_val[i],
-            bbp_val[i],
-            ma_val[i],
-            st_val[i],
-            reg_val[i],
-            ms_val[i],
+            rsi_val[i], stoch_val[i], cci_val[i], bbp_val[i], ma_val[i], st_val[i], reg_val[i], ms_val[i]
         ]:
             if not np.isnan(val):
                 summation += val
@@ -774,19 +761,11 @@ def _compute_market_sentiment_signals(
 
     return long_sig, short_sig
 
-
 def market_sentiment_signals(
     df,
-    rsi_len=14,
-    stoch_k_len=14,
-    stoch_k_smooth=3,
-    cci_len=20,
-    bbp_len=13,
-    ma_len=20,
-    st_len=10,
-    st_mult=3,
-    reg_len=25,
-    ms_len=5,
+    rsi_len=14, stoch_k_len=14, stoch_k_smooth=3, cci_len=20,
+    bbp_len=13, ma_len=20, st_len=10, st_mult=3, reg_len=25, ms_len=5,
+    persist=5
 ):
     long_sig, short_sig = _compute_market_sentiment_signals(
         close=df["Close"].values,
@@ -806,17 +785,15 @@ def market_sentiment_signals(
     df_result = df.copy()
     long = long_sig.astype(int)
     short = short_sig.astype(int)
-    df_result["market_sentiment_signal"] = long - short
-    df_result["market_sentiment_signal"] = df_result["market_sentiment_signal"].replace(
-        0, np.nan
-    )
-    df_result["market_sentiment_signal"] = (
-        df_result["market_sentiment_signal"].ffill(limit=5).fillna(0).astype(int)
+    df_result["strategy_market_sentiment"] = long - short
+    df_result["strategy_market_sentiment"] = df_result["strategy_market_sentiment"].replace(0, np.nan)
+    df_result["strategy_market_sentiment"] = (
+        df_result["strategy_market_sentiment"].ffill(limit=persist).fillna(0).astype(int)
     )
     return df_result
 
 
-@njit
+@njit(cache=True)
 def compute_pivots_lookback(low, high, window):
     n = len(low)
     pivots = np.zeros(n, dtype=np.int8)
@@ -836,8 +813,7 @@ def compute_pivots_lookback(low, high, window):
             pivots[row] = 2
     return pivots
 
-
-@njit
+@njit(cache=True)
 def compute_ema_signal_numba(open_, close, ema, backcandles):
     n = len(open_)
     signal = np.zeros(n, dtype=np.int8)
@@ -857,28 +833,21 @@ def compute_ema_signal_numba(open_, close, ema, backcandles):
             signal[row] = 1
     return signal
 
-
 def ema_pivot_signals(df, ema_length=45, backcandles=15, pivot_window=10):
     ema = df["Close"].ewm(span=ema_length, adjust=False).mean()
     df["EMASignal"] = compute_ema_signal_numba(
         df["Open"].values, df["Close"].values, ema.values, backcandles
     )
-    df["isPivot"] = compute_pivots_lookback(
+    df["strategy_isPivot"] = compute_pivots_lookback(
         df["Low"].values, df["High"].values, pivot_window
     )
-    df["isPivot"] = df["isPivot"].replace(0, np.nan)
-    df["isPivot"] = df["isPivot"].ffill(limit=5).fillna(0).astype(int)
-    df["pointpos"] = np.where(
-        df["isPivot"] == 2,
-        df["Low"] - 1e-3,
-        np.where(df["isPivot"] == 1, df["High"] + 1e-3, 0),
-    )
-    df["pointpos"] = df["pointpos"].replace(0, np.nan)
-    df["pointpos"] = df["pointpos"].ffill(limit=5).fillna(0).astype(int)
+    df["strategy_isPivot"] = df["strategy_isPivot"].replace(0, np.nan)
+    df["strategy_isPivot"] = df["strategy_isPivot"].ffill(limit=5).fillna(0).astype(int)
+
     return df
 
 
-@njit
+@njit(cache=True)
 def compute_harsi_signals(
     close,
     high,
@@ -993,20 +962,20 @@ def harsi_strategy(
         use_adx=use_adx,
         use_vortex=use_vortex,
     )
-    df["harsi_signal"] = signal
-    df["harsi_signal"] = df["harsi_signal"].replace(0, np.nan)
-    df["harsi_signal"] = df["harsi_signal"].ffill(limit=5).fillna(0).astype(int)
+    df["strategy_harsi"] = signal
+    df["strategy_harsi"] = df["strategy_harsi"].replace(0, np.nan)
+    df["strategy_harsi"] = df["strategy_harsi"].ffill(limit=5).fillna(0).astype(int)
     return df
 
 
 def apply_strategies(df, context):
     df = mark_bwab_signals(df, **context["mark_bwab_signals"])
-    df = apply_triple_ma(df, **context["apply_triple_ma"])
+    df = triple_ma(df, **context["triple_ma"])
     df = generate_market_bottom_signals(df, **context["generate_market_bottom_signals"])
     df = williams_r_signals(df, **context["williams_r_signals"])
     df = lowest_highest_tick_strategy(df, **context["lowest_highest_tick_strategy"])
     df = compute_two_pole_oscillator(df, **context["compute_two_pole_oscillator"])
-    df = apply_adaptive_t3_signals(df, **context["apply_adaptive_t3_signals"])
+    df = adaptive_t3_signals(df, **context["adaptive_t3_signals"])
     df = next_pivot_signals(df, **context["next_pivot_signals"])
     df = market_sentiment_signals(
         df, **context["market_sentiment_signals"]
