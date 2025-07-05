@@ -4,3 +4,6 @@ tmp
 *.db
 .venv
 *.lock
+.env
+*.csv
+__pycache__
